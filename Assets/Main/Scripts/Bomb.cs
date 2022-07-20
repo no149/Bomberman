@@ -1,0 +1,121 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bomb : MonoBehaviour
+{
+    public enum HitRadius
+    {
+        Low = 1,
+        Medium = 2,
+        High = 3,
+        Super = 5
+    }
+
+    public int ExplosionWindow;
+
+    public event EventHandler<GameObject> ObjectHit;
+
+    public event EventHandler Detonated;
+
+    public HitRadius RayHitRadius;
+
+    Animator _animator;
+
+    bool _fuming;
+
+    bool _detonated;
+
+    GameObject _lastCollidedObject;
+
+    public const string TagName = "Bomb";
+
+    public bool IsHazard
+    {
+        get
+        {
+            return _detonated;
+        }
+    }
+
+    float SpeedMultiplier
+    {
+        get
+        {
+            switch (RayHitRadius)
+            {
+                case HitRadius.Low:
+                    return 1.5f;
+                case HitRadius.Medium:
+                    return 1.7f;
+                case HitRadius.High:
+                    return 2f;
+                case HitRadius.Super:
+                    return 3f;
+                default:
+                    return 0;
+            }
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        InvokeRepeating("OnTimedEvent", 0, 1);
+        _animator = GetComponent<Animator>();
+        _animator.SetFloat("SpeedMultiplier", SpeedMultiplier);
+    }
+
+    private void OnTimedEvent()
+    {
+        ExplosionWindow--;
+        if (ExplosionWindow < 1)
+        {
+            CancelInvoke();
+            Detonate();
+        }
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        print("bomb collided");
+        print("detonated=" + _detonated);
+
+        if (_detonated && ObjectHit != null)
+        {
+            ObjectHit(this, collision.gameObject);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        _animator
+            .SetBool("Done",
+            gameObject.transform.localScale.y >= (float) RayHitRadius);
+    }
+
+    void Fume_Started()
+    {
+        _fuming = true;
+        _detonated = false;
+    }
+
+    void Detonate()
+    {
+        _detonated = true;
+        print("detonated");
+        var boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        var circleCollider2D = gameObject.GetComponent<CircleCollider2D>();
+        boxCollider2D.enabled = true;
+        circleCollider2D.enabled = false;
+        _animator.SetBool("Detonated", true);
+        if (Detonated != null) Detonated(this, EventArgs.Empty);
+    }
+
+    void Fume_Over()
+    {
+        Destroy (gameObject);
+    }
+}

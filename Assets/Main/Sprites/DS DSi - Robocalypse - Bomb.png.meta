@@ -1,0 +1,1322 @@
+fileFormatVersion: 2
+guid: b2da269b87e67f163a4a6a530fab9134
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 207
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1deac06e868a7f12b9e0b7ce0e83878b
+      internalID: 1919606530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 207
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813718b38e829a7a093e4939a36725ae
+      internalID: 1168103226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 207
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1cb7ad41c5b7438a1b7c00ce4fd597
+      internalID: -592325993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_3
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 209
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5079c2d784ff9539ab0582ea70b24483
+      internalID: 1299308804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_4
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 211
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b709c12b7f163d77ad37719dd022788
+      internalID: 279833596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_5
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 209
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ca6fe1e84c7fec27b4ef5409a8523d1
+      internalID: -1991605569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_6
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 89
+        width: 129
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0c1178271eb40d099decb20db36b4a
+      internalID: 1786938102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_7
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 86
+        width: 129
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249d9ada4fdf66221b6ad3f7d7a704a6
+      internalID: -1767492922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_8
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 166
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebdd0c98f281c5c9bbf24ce0c4f2e376
+      internalID: 1100632122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_9
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 166
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8332c98e463cd7497a99debb9158f3d2
+      internalID: 438990774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_10
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 166
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 566e3b424776fae57abee598810a8985
+      internalID: -1707428506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_11
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 168
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a5e3a3e76aa216c1946968b46b8c652
+      internalID: 300796006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_12
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 170
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84ee19da5c2c0a86a896b97f1b00c83
+      internalID: 1505550359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_13
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 168
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02b4d61372215df794ede036698d480
+      internalID: -1947697571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_14
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 176
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa60abbb419ec8fcea56a1092f8c874f
+      internalID: 2136837794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_15
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 172
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f0c9f9f2190f73aa1b08470d8dd864
+      internalID: 1138703104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_16
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 125
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78732193360a8da83bf56abffc355c3d
+      internalID: 289140000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_17
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 125
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f38e3cb7c94875432aa11cdfeb573640
+      internalID: -1409579405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_18
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 125
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17e58065fcfe78e29dfd9d1a95bc420
+      internalID: -1477606356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_19
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 127
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c70ebd47d3c8325fa1dfb0a7004837c
+      internalID: -1886509090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_20
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 129
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27d50a72c587bee29109d0b63754e5b
+      internalID: -1423816664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_21
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 127
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a5c01e57a47c3be8e1c6bc27db6ac5
+      internalID: 1981343654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_22
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 46
+        width: 129
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a829ffdfc544e653bbb5ddf654c1f49
+      internalID: 225816573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_23
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 37
+        width: 129
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a7b5286cd95e6fa88adb6af7b147cb
+      internalID: 400321920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_24
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 84
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0605a5e3dcb47f3f8ab6c47b48f5786
+      internalID: -1529772329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_25
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 84
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f260d25ad74a52f3495707e713d6009b
+      internalID: -2002450085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_26
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 84
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04811d47bec55c662bd50eb9a52c3312
+      internalID: 1191238179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_27
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 86
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42dccddd070f2b199b0242805321ab7b
+      internalID: 1083725756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_28
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 88
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c543c8d8c030a8c92dd03a2b75144c
+      internalID: 413129468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_29
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 86
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f9bbaeb818e487ca32c15ba3e0e2b7
+      internalID: 195956092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_30
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 43
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d547a5d44a6e41149aea345156d271e1
+      internalID: -379112203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_31
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 43
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a41708a0db6b663956c8e62a11759c
+      internalID: 314076857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_32
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 43
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4905f73cc1bf2f01ca0ab5d14e870fc6
+      internalID: -1372203808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_33
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 45
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e72355fb54f92d083c3021c3eabddf
+      internalID: -192999651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_34
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 47
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71dffdb3e65f5431589245f1d9ecedf3
+      internalID: 1761478569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_35
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 45
+        width: 21
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43bbd2bfabfcff7c18acd5971d94e30b
+      internalID: 1526224650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_36
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 7
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0bc56279927ef18a7ef7887f74d4ac
+      internalID: -1056376627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_37
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 7
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3df5590316c8df27a42fe852b2ad38f
+      internalID: 2029982697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_38
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 7
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84072e5609b627b9997dc6900170f38
+      internalID: 1465750584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_39
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 7
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e1595e0b569f767afd30a9695cb7a9
+      internalID: -1954436500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_40
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 7
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221c757dd9aef2b78bcf55ff1b1c64bb
+      internalID: -2108532522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_41
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 7
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a295172dbfa3e06debcaee68b9eb82b0
+      internalID: -836078108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_42
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 7
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde08c35dbf36b4f986fec70dcc4c594
+      internalID: 1605621972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_43
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 7
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd11fa59ea8fff11af47ff667c5664c
+      internalID: -1131855861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_44
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 7
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2deaba61c26c0e5f6b319b02b3e7ac6d
+      internalID: 336553763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_45
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 7
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e078c5d9f23ee7e65b962b68eb4ec030
+      internalID: 156105102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_46
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 7
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 627711a70d48fe3e994a706f3f78a429
+      internalID: 1206852288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_47
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 7
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda73136d6bb54cf09beda739078e11f
+      internalID: 693819163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_48
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 7
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ef32909c2bc68dfb731c0816ec2e58
+      internalID: -96760092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_49
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 7
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e965239fbb726e238dc797a65e85943
+      internalID: 507583550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_50
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 7
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50bc74c81b6e5c1bf9ad328a3361c503
+      internalID: -204409392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_51
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 7
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edce1f28f526f9c11b2b8daa754c5ea7
+      internalID: -1460283981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_52
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 7
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c04f7773e955109aac373ff7a894aba
+      internalID: -996069949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Robocalypse - Bomb_53
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 7
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cf0562a7360bc1aa8d22a59a21cc5d
+      internalID: 209109019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DS DSi - Robocalypse - Bomb_42: 1605621972
+      DS DSi - Robocalypse - Bomb_39: -1954436500
+      DS DSi - Robocalypse - Bomb_25: -2002450085
+      DS DSi - Robocalypse - Bomb_9: 438990774
+      DS DSi - Robocalypse - Bomb_14: 2136837794
+      DS DSi - Robocalypse - Bomb_12: 1505550359
+      DS DSi - Robocalypse - Bomb_5: -1991605569
+      DS DSi - Robocalypse - Bomb_30: -379112203
+      DS DSi - Robocalypse - Bomb_15: 1138703104
+      DS DSi - Robocalypse - Bomb_20: -1423816664
+      DS DSi - Robocalypse - Bomb_47: 693819163
+      DS DSi - Robocalypse - Bomb_40: -2108532522
+      DS DSi - Robocalypse - Bomb_24: -1529772329
+      DS DSi - Robocalypse - Bomb_33: -192999651
+      DS DSi - Robocalypse - Bomb_19: -1886509090
+      DS DSi - Robocalypse - Bomb_22: 225816573
+      DS DSi - Robocalypse - Bomb_0: 1919606530
+      DS DSi - Robocalypse - Bomb_4: 279833596
+      DS DSi - Robocalypse - Bomb_8: 1100632122
+      DS DSi - Robocalypse - Bomb_26: 1191238179
+      DS DSi - Robocalypse - Bomb_52: -996069949
+      DS DSi - Robocalypse - Bomb_38: 1465750584
+      DS DSi - Robocalypse - Bomb_27: 1083725756
+      DS DSi - Robocalypse - Bomb_37: 2029982697
+      DS DSi - Robocalypse - Bomb_49: 507583550
+      DS DSi - Robocalypse - Bomb_44: 336553763
+      DS DSi - Robocalypse - Bomb_36: -1056376627
+      DS DSi - Robocalypse - Bomb_28: 413129468
+      DS DSi - Robocalypse - Bomb_46: 1206852288
+      DS DSi - Robocalypse - Bomb_45: 156105102
+      DS DSi - Robocalypse - Bomb_3: 1299308804
+      DS DSi - Robocalypse - Bomb_16: 289140000
+      DS DSi - Robocalypse - Bomb_11: 300796006
+      DS DSi - Robocalypse - Bomb_17: -1409579405
+      DS DSi - Robocalypse - Bomb_10: -1707428506
+      DS DSi - Robocalypse - Bomb_51: -1460283981
+      DS DSi - Robocalypse - Bomb_29: 195956092
+      DS DSi - Robocalypse - Bomb_32: -1372203808
+      DS DSi - Robocalypse - Bomb_53: 209109019
+      DS DSi - Robocalypse - Bomb_1: 1168103226
+      DS DSi - Robocalypse - Bomb_35: 1526224650
+      DS DSi - Robocalypse - Bomb_23: 400321920
+      DS DSi - Robocalypse - Bomb_50: -204409392
+      DS DSi - Robocalypse - Bomb_43: -1131855861
+      DS DSi - Robocalypse - Bomb_18: -1477606356
+      DS DSi - Robocalypse - Bomb_6: 1786938102
+      DS DSi - Robocalypse - Bomb_21: 1981343654
+      DS DSi - Robocalypse - Bomb_31: 314076857
+      DS DSi - Robocalypse - Bomb_2: -592325993
+      DS DSi - Robocalypse - Bomb_7: -1767492922
+      DS DSi - Robocalypse - Bomb_13: -1947697571
+      DS DSi - Robocalypse - Bomb_34: 1761478569
+      DS DSi - Robocalypse - Bomb_41: -836078108
+      DS DSi - Robocalypse - Bomb_48: -96760092
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
