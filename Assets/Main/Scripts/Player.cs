@@ -33,6 +33,14 @@ public class Player : Character
         }
     }
 
+    public override List<string> HazardTagNames
+    {
+        get
+        {
+            return new List<string>();
+        }
+    }
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -74,6 +82,10 @@ public class Player : Character
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
+        if (collision.gameObject.tag == AntagonistTagName)
+        {
+            TakeDamage();
+        }
     }
 
     void Awake()

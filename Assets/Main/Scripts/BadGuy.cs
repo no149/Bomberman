@@ -24,7 +24,15 @@ public class BadGuy : Character
     {
         get
         {
-            return "Bomb";
+            return "Player";
+        }
+    }
+
+    public override List<string> HazardTagNames
+    {
+        get
+        {
+            return new List<string>() { "Bomb" };
         }
     }
 
@@ -81,6 +89,7 @@ public class BadGuy : Character
         else
             _turnAngle += 90;
 
+        print (_turnAngle);
         _turnAngle = Mathf.Repeat(_turnAngle, 360);
         float inputAngleRadians = _turnAngle * Mathf.Deg2Rad;
         _XmovementDirection = Mathf.Cos(inputAngleRadians);

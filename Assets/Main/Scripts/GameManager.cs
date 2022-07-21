@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     void Bomb_Spawned(object sender, Bomb bomb)
     {
-        bomb.ObjectHit += Bomb_Hit;
+        //   bomb.ObjectHit += Bomb_Hit;
     }
 
     void Bomb_Hit(object sender, GameObject hitObject)

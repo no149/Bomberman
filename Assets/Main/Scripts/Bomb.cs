@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : Hazard
 {
     public enum HitRadius
     {
@@ -31,7 +31,7 @@ public class Bomb : MonoBehaviour
 
     public const string TagName = "Bomb";
 
-    public bool IsHazard
+    public override bool CanKill
     {
         get
         {
@@ -93,19 +93,18 @@ public class Bomb : MonoBehaviour
     {
         _animator
             .SetBool("Done",
-            gameObject.transform.localScale.y >= (float) RayHitRadius);
+            gameObject.transform.localScale.y >= (float) RayHitRadius * .3);
     }
 
     void Fume_Started()
     {
         _fuming = true;
-        _detonated = false;
     }
 
     void Detonate()
     {
-        _detonated = true;
         print("detonated");
+        _detonated = true;
         var boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         var circleCollider2D = gameObject.GetComponent<CircleCollider2D>();
         boxCollider2D.enabled = true;

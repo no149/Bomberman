@@ -17,7 +17,7 @@ public abstract class Character : MonoBehaviour
 
     public abstract string AntagonistTagName { get; }
 
-    private const string HazardTagName = "Hazard";
+    public abstract List<string> HazardTagNames { get; }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -61,7 +61,16 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == HazardTagName)
+        if (collision.gameObject.tag == "Bomb")
+        {
+            print("bomb collision");
+            print("can kill:" +
+            collision.gameObject.GetComponent<Hazard>().CanKill);
+        }
+        if (
+            HazardTagNames.Contains(collision.gameObject.tag) &&
+            collision.gameObject.GetComponent<Hazard>().CanKill
+        )
         {
             Kill(false);
         }
