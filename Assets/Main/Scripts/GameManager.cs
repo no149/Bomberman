@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetupCharacter(Character character)
+    {
+        character.Collided += Character_Collided;
+    }
+
     public void SetupScene()
     {
         LifeCount.Instance.Text = Player.Instance.HealthPoints.ToString();
@@ -40,35 +45,55 @@ public class GameManager : MonoBehaviour
             GameManagerInstance = this;
 
         SetupScene();
-        Player.Instance.Damaged += Player_Damaged;
-        Player.Instance.Killed += Player_Killed;
+        Player.Instance.Died += Player_Died;
         Player.Instance.BombSpawned += Bomb_Spawned;
+    }
+
+    void Character_Collided(object sender, GameObject collidedObject)
+    {
+        if (
+            ((MonoBehaviour) sender).tag == Player.TagName &&
+            collidedObject.tag == Player.AntagonistTagName
+        )
+        {
+            HarmPlayer((Player) sender);
+        }
+    }
+
+    void HarmPlayer(Player player)
+    {
+        player.Harm();
+        Player_Harmed(player.HealthPoints);
     }
 
     void Bomb_Spawned(object sender, Bomb bomb)
     {
-        //   bomb.ObjectHit += Bomb_Hit;
+        bomb.ObjectHit += Bomb_Hit;
     }
 
     void Bomb_Hit(object sender, GameObject hitObject)
     {
-        print("bomb hit=" + hitObject.tag);
-        if (hitObject.tag == BadGuy.TagName || hitObject.tag == Player.TagName)
+        if (hitObject.tag == BadGuy.TagName)
         {
             var character = hitObject.GetComponent<Character>();
-            character.TakeDamage();
+            character.Harm();
+        }
+        else if (hitObject.tag == Player.TagName)
+        {
+            var character = hitObject.GetComponent<Character>();
+            character.Die(false);
         }
         else if (hitObject.tag == "BreakableObject") Destroy(hitObject);
     }
 
-    void Player_Killed(object sender, bool reincarnate)
+    void Player_Died(object sender, bool reincarnate)
     {
         if (!reincarnate) GameOver();
     }
 
-    void Player_Damaged(object sender, int currentHealthPoints)
+    void Player_Harmed(int currentHealthPoints)
     {
-        print("Player_Damaged called");
+        print("Player_Harmed called:" + currentHealthPoints);
         LifeCount.Instance.Text = currentHealthPoints.ToString();
         if (currentHealthPoints == 0 && GameOverCanvas != null) GameOver();
     }

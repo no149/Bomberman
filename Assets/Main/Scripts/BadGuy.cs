@@ -20,13 +20,7 @@ public class BadGuy : Character
 
     public const string TagName = "BadGuy";
 
-    public override string AntagonistTagName
-    {
-        get
-        {
-            return "Player";
-        }
-    }
+    public const string AntagonistTagName = "Player";
 
     public override List<string> HazardTagNames
     {

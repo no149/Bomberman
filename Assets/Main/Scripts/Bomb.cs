@@ -77,7 +77,7 @@ public class Bomb : Hazard
         }
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         print("bomb collided");
         print("detonated=" + _detonated);
@@ -85,6 +85,7 @@ public class Bomb : Hazard
         if (_detonated && ObjectHit != null)
         {
             ObjectHit(this, collision.gameObject);
+            print("bomb collided with object:" + collision.gameObject.tag);
         }
     }
 

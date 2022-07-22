@@ -9,13 +9,13 @@ public abstract class Character : MonoBehaviour
 
     public bool respawnable;
 
-    internal event EventHandler<int> Damaged;
+    internal event EventHandler<int> Harmed;
 
-    internal event EventHandler<bool> Killed;
+    internal event EventHandler<bool> Died;
+
+    internal event EventHandler<GameObject> Collided;
 
     protected Vector2 OriginalLocation;
-
-    public abstract string AntagonistTagName { get; }
 
     public abstract List<string> HazardTagNames { get; }
 
@@ -23,6 +23,7 @@ public abstract class Character : MonoBehaviour
     protected virtual void Start()
     {
         OriginalLocation = gameObject.transform.position;
+        GameManager.GameManagerInstance.SetupCharacter(this);
     }
 
     // Update is called once per frame
@@ -30,49 +31,38 @@ public abstract class Character : MonoBehaviour
     {
     }
 
-    public void Kill(bool reincarnate)
+    public void Die(bool reincarnate)
     {
         if (respawnable && reincarnate)
         {
             gameObject.SetActive(false);
             transform.position = OriginalLocation;
             gameObject.SetActive(true);
-            if (Killed != null) Killed(this, true);
+            if (Died != null) Died(this, true);
         }
         else
         {
             Destroy (gameObject);
-            if (Killed != null) Killed(this, false);
+            if (Died != null) Died(this, false);
         }
     }
 
-    protected void RaiseDamaged(int healthPoints)
+    protected void RaiseHarmed(int healthPoints)
     {
-        if (Damaged != null) Damaged(this, healthPoints);
+        if (Harmed != null) Harmed(this, healthPoints);
     }
 
-    public void TakeDamage()
+    public void Harm()
     {
+        print("Character Harm called");
         HealthPoints--;
-        Kill(HealthPoints > 0);
+        Die(HealthPoints > 0);
 
-        RaiseDamaged (HealthPoints);
+        RaiseHarmed (HealthPoints);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bomb")
-        {
-            print("bomb collision");
-            print("can kill:" +
-            collision.gameObject.GetComponent<Hazard>().CanKill);
-        }
-        if (
-            HazardTagNames.Contains(collision.gameObject.tag) &&
-            collision.gameObject.GetComponent<Hazard>().CanKill
-        )
-        {
-            Kill(false);
-        }
+        Collided?.Invoke(this, collision.gameObject);
     }
 }

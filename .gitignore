@@ -1,0 +1,9 @@
+Library/
+ProjectSettings/
+Logs/
+Packages/
+Temp/
+UserSettings/
+.config/
+.vscode/
+obj/

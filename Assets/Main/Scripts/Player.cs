@@ -13,6 +13,8 @@ public class Player : Character
 
     public bool CanSpawnMultipleBombs;
 
+    public const string AntagonistTagName = "BadGuy";
+
     public event EventHandler<Bomb> BombSpawned;
 
     internal static Player Instance
@@ -24,14 +26,6 @@ public class Player : Character
     }
 
     public const string TagName = "Player";
-
-    public override string AntagonistTagName
-    {
-        get
-        {
-            return "BadGuy";
-        }
-    }
 
     public override List<string> HazardTagNames
     {
@@ -75,16 +69,7 @@ public class Player : Character
     {
         if (hitObject == gameObject)
         {
-            Kill(false);
-        }
-    }
-
-    protected override void OnCollisionEnter2D(Collision2D collision)
-    {
-        base.OnCollisionEnter2D(collision);
-        if (collision.gameObject.tag == AntagonistTagName)
-        {
-            TakeDamage();
+            Die(false);
         }
     }
 
