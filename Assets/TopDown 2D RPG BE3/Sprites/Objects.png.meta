@@ -95,6 +95,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
@@ -138,6 +139,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -665,10 +667,18 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -7, y: -7}
-        - {x: -7, y: 7}
-        - {x: 7, y: 7}
-        - {x: 7, y: -7}
+      - - {x: 3.6860886, y: -7}
+        - {x: -3.245308, y: -7}
+        - {x: -6, y: -6}
+        - {x: -7, y: -3.862894}
+        - {x: -7, y: 3.6166973}
+        - {x: -5, y: 5}
+        - {x: -3.616703, y: 7}
+        - {x: 3.715248, y: 7}
+        - {x: 5, y: 6}
+        - {x: 6.999996, y: 3.055502}
+        - {x: 7, y: -3.8888898}
+        - {x: 6, y: -5}
       tessellationDetail: 0
       bones: []
       spriteID: 2c3ca0a8d0229f270800000000000000
@@ -757,7 +767,6 @@ TextureImporter:
       House B5: -1312994402987499043
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

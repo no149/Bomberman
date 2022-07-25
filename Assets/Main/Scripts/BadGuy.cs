@@ -36,60 +36,94 @@ public class BadGuy : Character
 
     float _YmovementDirection = 0;
 
-    float _turnAngle = 0;
+    float _turnAngle;
+
+    int _turnAngleCoefficient = 1;
+
+    private Vector3 _lastPos;
+    bool _collided;
+    GameObject _lastCollisionObject;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         _rb2D = GetComponent<Rigidbody2D>();
-        if (
-            MovementDirection == MovementDirectionEnum.Horizontal ||
-            MovementDirection == MovementDirectionEnum.Both
-        )
-        {
-            _turnAngle = 0;
-        }
-        else if (MovementDirection == MovementDirectionEnum.Vertical)
-        {
-            _turnAngle = 90;
-        }
-
-        float inputAngleRadians = _turnAngle * Mathf.Deg2Rad;
-        _XmovementDirection = Mathf.Cos(inputAngleRadians);
-        _YmovementDirection = Mathf.Sin(inputAngleRadians);
+        SetMoveDirection(true);
     }
 
+    private void SetMoveDirection(bool init)
+    {
+        if (init)
+            if (MovementDirection == MovementDirectionEnum.Horizontal)
+                _turnAngle = Mathf.Repeat(_turnAngle, 360);
+            else
+                _turnAngle = 90;
+        else
+        {
+            if (MovementDirection != MovementDirectionEnum.Both)
+            {
+                if (MovementDirection == MovementDirectionEnum.Vertical)
+                    _turnAngle *= -1;
+                else
+                    _turnAngle = _turnAngle == 0 ? 180 : 0;
+            }
+            else
+            {
+                // print("old angle:" + _turnAngle);
+                var coef = Random.Range(-2, 3);
+
+                var newAngle = 90 * coef;
+                if (newAngle == _turnAngle || 180 == Mathf.Abs(newAngle))
+                {
+                    coef = Random.Range(-2, 3);
+                    newAngle = 90 * coef;
+                }
+
+                _turnAngle = newAngle;
+                //   _turnAngle = Mathf.Repeat(newAngle, 360);
+                //print (newAngle);
+            }
+        }
+
+        print("final new angle:" + _turnAngle);
+        //_turnAngle = Mathf.Repeat(_turnAngle, 360);
+        float inputAngleRadians = _turnAngle * Mathf.Deg2Rad;
+        _XmovementDirection =
+            _turnAngleCoefficient * Mathf.Cos(inputAngleRadians);
+        _YmovementDirection =
+            _turnAngleCoefficient * Mathf.Sin(inputAngleRadians);
+    }
     // Update is called once per frame
     protected override void Update()
     {
-        //print((speed * _XmovementDirection));
-        _rb2D.velocity =
-            new Vector2(Speed * _XmovementDirection,
-                Speed * _YmovementDirection);
-    }
 
+
+        var curpos = gameObject.transform.position;
+        curpos.Normalize();
+        //To prevent warbling in place, because of frame-rate.
+        var changeDirCoef = 1f;
+        if (curpos == _lastPos)
+        {
+            print(curpos.x);
+            print(_lastPos.x);
+            SetMoveDirection(false);
+
+            //
+            changeDirCoef = 1.1f;
+        }
+
+        _rb2D.velocity = new Vector2(Speed * _XmovementDirection * changeDirCoef,
+                Speed * _YmovementDirection * changeDirCoef);
+        _lastPos = curpos;
+    }
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-
-        if (
-            MovementDirection == MovementDirectionEnum.Horizontal ||
-            MovementDirection == MovementDirectionEnum.Vertical
-        )
-        {
-            _turnAngle += 180;
-        }
-        else
-            _turnAngle += 90;
-
-        print (_turnAngle);
-        _turnAngle = Mathf.Repeat(_turnAngle, 360);
-        float inputAngleRadians = _turnAngle * Mathf.Deg2Rad;
-        _XmovementDirection = Mathf.Cos(inputAngleRadians);
-
-        _YmovementDirection = Mathf.Sin(inputAngleRadians);
+        _collided = true;
     }
+
+
 
     Vector3 Vector3FromAngle(float inputAngleDegrees)
     {
