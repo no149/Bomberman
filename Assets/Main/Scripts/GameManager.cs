@@ -60,13 +60,15 @@ public class GameManager : MonoBehaviour
             collidedObject.tag == Player.AntagonistTagName
         )
         {
-            HarmPlayer((Player)sender);
+            HarmPlayer((Player)sender, collidedObject.GetComponent<BadGuy>().DamagePower);
         }
     }
 
-    void HarmPlayer(Player player)
+    void HarmPlayer(Player player, int damageLevel)
     {
-        player.Harm();
+        for (var i = 1; i <= damageLevel; i++)
+            player.Harm();
+
         Player_Harmed(player.HealthPoints);
     }
 
@@ -79,8 +81,7 @@ public class GameManager : MonoBehaviour
     {
         if (hitObject.tag == BadGuy.TagName)
         {
-            var character = hitObject.GetComponent<Character>();
-            character.Harm();
+            HarmBadGuy(hitObject);
         }
         else if (hitObject.tag == Player.TagName)
         {
@@ -88,6 +89,12 @@ public class GameManager : MonoBehaviour
             character.Die(false);
         }
         else if (hitObject.tag == "BreakableObject") Destroy(hitObject);
+    }
+
+    private static void HarmBadGuy(GameObject badguy)
+    {
+        var badguyScript = badguy.GetComponent<BadGuy>();
+        badguyScript.Harm();
     }
 
     void Player_Died(object sender, bool reincarnate)

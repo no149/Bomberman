@@ -11,6 +11,7 @@ public class BadGuy : Character
         Both
     }
 
+    public int DamagePower;
     public MovementDirectionEnum MovementDirection;
 
     public float Speed = 3;

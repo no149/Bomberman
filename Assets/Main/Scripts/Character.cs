@@ -7,8 +7,6 @@ public abstract class Character : MonoBehaviour
 {
     public int HealthPoints;
 
-    public bool respawnable;
-
     internal event EventHandler<int> Harmed;
 
     internal event EventHandler<bool> Died;
@@ -33,7 +31,7 @@ public abstract class Character : MonoBehaviour
 
     public void Die(bool reincarnate)
     {
-        if (respawnable && reincarnate)
+        if (reincarnate)
         {
             gameObject.SetActive(false);
             transform.position = OriginalLocation;
@@ -54,7 +52,7 @@ public abstract class Character : MonoBehaviour
 
     public void Harm()
     {
-        print("Character Harm called");
+        print("Character Harm called. health points:" + HealthPoints);
         HealthPoints--;
         Die(HealthPoints > 0);
 
