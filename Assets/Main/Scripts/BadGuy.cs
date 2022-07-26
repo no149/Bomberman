@@ -41,8 +41,6 @@ public class BadGuy : Character
     int _turnAngleCoefficient = 1;
 
     private Vector3 _lastPos;
-    bool _collided;
-    GameObject _lastCollisionObject;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -70,7 +68,6 @@ public class BadGuy : Character
             }
             else
             {
-                // print("old angle:" + _turnAngle);
                 var coef = Random.Range(-2, 3);
 
                 var newAngle = 90 * coef;
@@ -81,13 +78,8 @@ public class BadGuy : Character
                 }
 
                 _turnAngle = newAngle;
-                //   _turnAngle = Mathf.Repeat(newAngle, 360);
-                //print (newAngle);
             }
         }
-
-        print("final new angle:" + _turnAngle);
-        //_turnAngle = Mathf.Repeat(_turnAngle, 360);
         float inputAngleRadians = _turnAngle * Mathf.Deg2Rad;
         _XmovementDirection =
             _turnAngleCoefficient * Mathf.Cos(inputAngleRadians);
@@ -95,32 +87,28 @@ public class BadGuy : Character
             _turnAngleCoefficient * Mathf.Sin(inputAngleRadians);
     }
     // Update is called once per frame
-    protected override void Update()
+    void FixedUpdate()
     {
 
 
         var curpos = gameObject.transform.position;
-        curpos.Normalize();
+        // curpos.Normalize();
+        //_lastPos.Normalize();
         //To prevent warbling in place, because of frame-rate.
         var changeDirCoef = 1f;
         if (curpos == _lastPos)
         {
-            print(curpos.x);
-            print(_lastPos.x);
             SetMoveDirection(false);
-
-            //
             changeDirCoef = 1.1f;
         }
 
+        _lastPos = curpos;
         _rb2D.velocity = new Vector2(Speed * _XmovementDirection * changeDirCoef,
                 Speed * _YmovementDirection * changeDirCoef);
-        _lastPos = curpos;
     }
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
-        _collided = true;
     }
 
 
