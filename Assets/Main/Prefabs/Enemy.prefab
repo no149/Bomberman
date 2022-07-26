@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9076128486532487935}
   - component: {fileID: 9076128486532487932}
-  - component: {fileID: 9076128486532487928}
   - component: {fileID: 9076128486532487929}
   - component: {fileID: 9076128486532487934}
+  - component: {fileID: 975371783}
+  - component: {fileID: 975371775}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: BadGuy
@@ -87,23 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9076128486532487928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076128486532487933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3064d17cfa409717ab62a10e3dace39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthPoints: 1
-  respawnable: 0
-  MovementDirection: 0
-  Speed: 3
-  StraightWalker: 1
 --- !u!50 &9076128486532487929
 Rigidbody2D:
   serializedVersion: 4
@@ -151,3 +135,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
+--- !u!95 &975371783
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076128486532487933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1290744dca372d43f8a96cc61e2aa208, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &975371775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076128486532487933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3064d17cfa409717ab62a10e3dace39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 1
+  respawnable: 0
+  MovementDirection: 1
+  Speed: 1
+  StraightWalker: 1
