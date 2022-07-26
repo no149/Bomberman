@@ -13,7 +13,7 @@ public abstract class Character : MonoBehaviour
 
     internal event EventHandler<bool> Died;
 
-    internal event EventHandler<GameObject> Collided;
+    internal event EventHandler<CollisionData> Collided;
 
     protected Vector2 OriginalLocation;
 
@@ -42,7 +42,7 @@ public abstract class Character : MonoBehaviour
         }
         else
         {
-            Destroy (gameObject);
+            Destroy(gameObject);
             if (Died != null) Died(this, false);
         }
     }
@@ -58,11 +58,18 @@ public abstract class Character : MonoBehaviour
         HealthPoints--;
         Die(HealthPoints > 0);
 
-        RaiseHarmed (HealthPoints);
+        RaiseHarmed(HealthPoints);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        Collided?.Invoke(this, collision.gameObject);
+        var data = new CollisionData() { CollidedGameObject = collision.gameObject };
+        Collided?.Invoke(this, data);
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        var data = new CollisionData() { CollidedGameObject = collision.gameObject, IsTrigger = true };
+        Collided?.Invoke(this, data);
     }
 }

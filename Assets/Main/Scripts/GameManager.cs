@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameManagerInstance != null && GameManagerInstance != this)
         {
-            Destroy (gameObject);
+            Destroy(gameObject);
         }
         else
             GameManagerInstance = this;
@@ -49,14 +49,18 @@ public class GameManager : MonoBehaviour
         Player.Instance.BombSpawned += Bomb_Spawned;
     }
 
-    void Character_Collided(object sender, GameObject collidedObject)
+    void Character_Collided(object sender, CollisionData collisionData)
     {
-        if (
-            ((MonoBehaviour) sender).tag == Player.TagName &&
+        GameObject collidedObject = collisionData.CollidedGameObject;
+        if (collisionData.IsTrigger && sender is Player)
+            Player.Instance.Die(false);
+
+        else if (
+            ((MonoBehaviour)sender).tag == Player.TagName &&
             collidedObject.tag == Player.AntagonistTagName
         )
         {
-            HarmPlayer((Player) sender);
+            HarmPlayer((Player)sender);
         }
     }
 
