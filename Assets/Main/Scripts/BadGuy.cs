@@ -16,8 +16,8 @@ public class BadGuy : Character
 
     public float Speed = 3;
 
-    // whether it can onlyh walk straight until it hits a block.
-    public bool StraightWalker = true;
+    // whether it can only walk straight until it hits a block.
+    public bool FollowPlayer = true;
 
     public const string TagName = "BadGuy";
 

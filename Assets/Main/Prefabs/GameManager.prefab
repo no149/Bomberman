@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4c6da9fe53f8250b51e730da6cc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnPoint: {fileID: 0}
+  GameFinishedCanvas: {fileID: 0}
+  FinishText: {fileID: 0}
+  Exit: {fileID: 0}
