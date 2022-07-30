@@ -120,15 +120,20 @@ public class GameManager : MonoBehaviour
 
     void EndGame(GameEndReason endReason)
     {
-        GameEndedCanvas.SetActive(true);
-        var endTextMesh = FinishText.GetComponent<TMPro.TMP_Text>();
+        var endTextMesh = FinishText.GetComponent<TextMesh>();
         if (endReason == GameEndReason.PlayerDied)
+        {
             endTextMesh.text = "Game over!";
+            GameEndedCanvas.transform.Find("Lose Particle System").gameObject.SetActive(true);
+            GameEndedCanvas.transform.Find("Win Particle System").gameObject.SetActive(false);
+        }
         else if (endReason == GameEndReason.PlayerWon)
         {
             endTextMesh.text = "You won!";
-
+            GameEndedCanvas.transform.Find("Lose Particle System").gameObject.SetActive(false);
+            GameEndedCanvas.transform.Find("Win Particle System").gameObject.SetActive(true);
         }
+        GameEndedCanvas.SetActive(true);
     }
 
     // Update is called once per frame

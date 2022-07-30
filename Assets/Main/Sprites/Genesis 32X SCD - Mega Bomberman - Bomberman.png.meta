@@ -20,6 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -693,7 +695,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Genesis 32X SCD - Mega Bomberman - Bomberman_18: -804724517
+      Genesis 32X SCD - Mega Bomberman - Bomberman_6: 1712627709
       Genesis 32X SCD - Mega Bomberman - Bomberman_3: 763742599
       Genesis 32X SCD - Mega Bomberman - Bomberman_7: 84267675
       Genesis 32X SCD - Mega Bomberman - Bomberman_8: -2007201923
@@ -719,10 +721,9 @@ TextureImporter:
       Genesis 32X SCD - Mega Bomberman - Bomberman_17: -1778118158
       Genesis 32X SCD - Mega Bomberman - Bomberman_22: -63735803
       Genesis 32X SCD - Mega Bomberman - Bomberman_23: 2031869848
-      Genesis 32X SCD - Mega Bomberman - Bomberman_6: 1712627709
+      Genesis 32X SCD - Mega Bomberman - Bomberman_18: -804724517
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

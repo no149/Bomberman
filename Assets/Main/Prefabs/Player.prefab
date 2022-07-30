@@ -182,6 +182,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthPoints: 10
-  respawnable: 1
   Bomb: {fileID: 0}
   CanSpawnMultipleBombs: 0
