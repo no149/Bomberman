@@ -35,7 +35,7 @@ public class Bomb : Hazard
     {
         get
         {
-            return _detonated;
+            return _detonated && !_fuming;
         }
     }
 
@@ -82,7 +82,7 @@ public class Bomb : Hazard
         print("bomb collided");
         print("detonated=" + _detonated);
 
-        if (_detonated && ObjectHit != null)
+        if (_detonated && ObjectHit != null && !_fuming)
         {
             ObjectHit(this, collision.gameObject);
             print("bomb collided with object:" + collision.gameObject.tag);
@@ -94,7 +94,7 @@ public class Bomb : Hazard
     {
         _animator
             .SetBool("Done",
-            gameObject.transform.localScale.y >= (float) RayHitRadius * .3);
+            gameObject.transform.localScale.y >= (float)RayHitRadius * .3);
     }
 
     void Fume_Started()
@@ -116,6 +116,6 @@ public class Bomb : Hazard
 
     void Fume_Over()
     {
-        Destroy (gameObject);
+        Destroy(gameObject);
     }
 }
