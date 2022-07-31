@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour
+public class MovementController
 {
     const string Direction = "Direction";
 
@@ -14,39 +14,40 @@ public class MovementController : MonoBehaviour
         Right,
         Bottom
     }
+    float _movementSpeed;
 
-    Animator animator;
+    Animator _animator;
 
-    public float movementSpeed = 3.0f;
 
     Vector2 movement = new Vector2();
 
-    Rigidbody2D rb2D;
+    Rigidbody2D _rb2D;
 
     // Start is called before the first frame update
-    void Start()
+    public MovementController(Animator animator, Rigidbody2D rb2d, float movementSpeed)
     {
-        animator = GetComponent<Animator>();
-        rb2D = GetComponent<Rigidbody2D>();
+        _animator = animator;
+        _rb2D = rb2d;
+        _movementSpeed = movementSpeed;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void Move(float x, float y)
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = x;
+        movement.y = y;
         movement.Normalize();
-        rb2D.velocity = movement * movementSpeed;
+        _rb2D.velocity = movement * _movementSpeed;
 
         if (movement.x == 0 && movement.y == 0)
-            animator.SetInteger(Direction, (int) MovementState.Idle);
+            _animator.SetInteger(Direction, (int)MovementState.Idle);
         else if (movement.x == 1)
-            animator.SetInteger(Direction, (int) MovementState.Right);
+            _animator.SetInteger(Direction, (int)MovementState.Right);
         else if (movement.x == -1)
-            animator.SetInteger(Direction, (int) MovementState.Left);
+            _animator.SetInteger(Direction, (int)MovementState.Left);
         if (movement.y == 1)
-            animator.SetInteger(Direction, (int) MovementState.Top);
+            _animator.SetInteger(Direction, (int)MovementState.Top);
         else if (movement.y == -1)
-            animator.SetInteger(Direction, (int) MovementState.Bottom);
+            _animator.SetInteger(Direction, (int)MovementState.Bottom);
     }
 }

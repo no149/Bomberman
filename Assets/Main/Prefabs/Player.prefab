@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6276469159588866679}
   - component: {fileID: 6276469159588866674}
   - component: {fileID: 6276469159588866675}
-  - component: {fileID: 6276469159588866672}
   - component: {fileID: 8022800837172085004}
   m_Layer: 3
   m_Name: Player
@@ -35,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6276469159588866676
 SpriteRenderer:
@@ -122,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.05484578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -133,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.32}
   m_EdgeRadius: 0
 --- !u!50 &6276469159588866675
 Rigidbody2D:
@@ -156,19 +155,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6276469159588866672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6276469159588866678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fec5942908b026448a4a9501b727db5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 3
 --- !u!114 &8022800837172085004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b7d99ecee7af3418c194153202c654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPoints: 10
-  Bomb: {fileID: 0}
+  HealthPoints: 3
+  Bomb: {fileID: 4408855668245860738, guid: 1894554a1ab410048af455e3d0f9c9ee, type: 3}
   CanSpawnMultipleBombs: 0

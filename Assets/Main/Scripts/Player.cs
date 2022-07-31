@@ -6,12 +6,13 @@ using UnityEngine;
 public class Player : Character
 {
     private static Player _instance;
-
+    MovementController _movementController;
     int _detonatingBombs;
 
     public Bomb Bomb;
 
     public bool CanSpawnMultipleBombs;
+    public float movementSpeed = 3.0f;
 
     public const string AntagonistTagName = "BadGuy";
 
@@ -39,6 +40,8 @@ public class Player : Character
     protected override void Start()
     {
         base.Start();
+        _movementController = new MovementController(GetComponent<Animator>(), GetComponent<Rigidbody2D>(),
+        movementSpeed);
     }
 
     // Update is called once per frame
@@ -59,7 +62,10 @@ public class Player : Character
             }
         }
     }
-
+    void FixedUpdate()
+    {
+        _movementController.Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
     void Bomb_Detonated(object sender, EventArgs e)
     {
         _detonatingBombs--;
