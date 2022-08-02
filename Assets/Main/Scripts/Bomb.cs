@@ -79,9 +79,6 @@ public class Bomb : Hazard
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        print("bomb collided");
-        print("detonated=" + _detonated);
-
         if (_detonated && ObjectHit != null && !_fuming)
         {
             ObjectHit(this, collision.gameObject);
