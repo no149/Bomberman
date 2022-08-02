@@ -73,20 +73,31 @@ public class GameManager : MonoBehaviour
     void Character_Collided(object sender, CollisionData collisionData)
     {
         GameObject collidedObject = collisionData.CollidedGameObject;
-        if (collisionData.IsTrigger && sender is Player && collidedObject.tag == HazardTagName)
-            Player.Instance.Die(false);
+        if (sender is Player)
+        {
+            if (collisionData.IsTrigger && collidedObject.tag == HazardTagName)
+                Player.Instance.Die(false);
 
-        else if (
-            ((MonoBehaviour)sender).tag == Player.TagName &&
-            collidedObject.tag == Player.AntagonistTagName
-        )
-        {
-            HarmPlayer((Player)sender, collidedObject.GetComponent<BadGuy>().DamagePower);
+            else if (collidedObject.tag == Player.AntagonistTagName)
+            {
+                HarmPlayer((Player)sender, collidedObject.GetComponent<BadGuy>().DamagePower);
+            }
+            else if (collidedObject.name == "Exit")
+            {
+                EndGame(GameEndReason.PlayerWon);
+            }
+            else if (collidedObject.tag == "Health")
+            {
+                IncreasePlayerHealth();
+                Destroy(collidedObject);
+            }
         }
-        else if (((MonoBehaviour)sender).tag == Player.TagName && collidedObject.name == "Exit")
-        {
-            EndGame(GameEndReason.PlayerWon);
-        }
+    }
+
+    void IncreasePlayerHealth()
+    {
+        Player.Instance.HealthPoints++;
+        LifeCount.Instance.Text = Player.Instance.HealthPoints.ToString();
     }
 
     void HarmPlayer(Player player, int damageLevel)
@@ -156,11 +167,6 @@ public class GameManager : MonoBehaviour
             GameEndedCanvas.transform.Find("Win Particle System").gameObject.SetActive(true);
         }
         GameEndedCanvas.SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     public void SetupCharacter(Character character)
