@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class GameManager : MonoBehaviour
 {
     public enum GameEndReason
@@ -18,25 +19,17 @@ public class GameManager : MonoBehaviour
 
     public GameObject GameEndedCanvas;
     public GameObject FinishText;
-
     public GameObject Exit;
-
+    public GameObject HeartPrefab;
+    public GameObject BoxPrefab;
+    int _levelNo = 1;
+    List<Box> _boxes = new List<Box>(10);
+    event EventHandler<Box> _boxAdded;
     public static GameManager GameManagerInstance
     {
         get; private set;
     }
 
-    public void SetupCharacter(Character character)
-    {
-        character.Collided += Character_Collided;
-    }
-
-    public void SetupScene()
-    {
-        LifeCount.Instance.Text = Player.Instance.HealthPoints.ToString();
-    }
-
-    // Start is called before the first frame update
     void Awake()
     {
         if (GameManagerInstance != null && GameManagerInstance != this)
@@ -52,6 +45,29 @@ public class GameManager : MonoBehaviour
         SetupScene();
         Player.Instance.Died += Player_Died;
         Player.Instance.BombSpawned += Bomb_Spawned;
+    }
+
+    private void RandomizeBoxHearts()
+    {
+        var breakables = GameObject.FindGameObjectsWithTag("Breakable");
+        var boxes = breakables.Where(b => b.GetComponent<Box>() != null).Select(b => b.GetComponent<Box>()).ToArray();
+        var heartsCount = (int)(boxes.Length * (0.3 / _levelNo));
+        print("boxes count:" + boxes.Length);
+        System.Random rand = new System.Random();
+        // var prevNums=new HashSet<int>();
+        for (int i = 0; i < heartsCount; i++)
+        {
+            var heartNo = rand.Next(heartsCount);
+
+            // if(prevNums.Contains(heartNo))
+            //     {
+            //         i--;
+            //         continue;
+            //     }
+            //prevNums.Add(heartNo);
+            boxes[heartNo].HasHeart = true;
+            print("set box heart");
+        }
     }
 
     void Character_Collided(object sender, CollisionData collisionData)
@@ -97,7 +113,13 @@ public class GameManager : MonoBehaviour
             var character = hitObject.GetComponent<Character>();
             character.Die(false);
         }
-        else if (hitObject.tag == "BreakableObject") Destroy(hitObject);
+        else if (hitObject.tag == "Breakable")
+        {
+            var box = hitObject.GetComponent<Box>();
+            if (box.HasHeart)
+                Instantiate(HeartPrefab, hitObject.transform.position, Quaternion.identity);
+            Destroy(hitObject);
+        }
     }
 
     private static void HarmBadGuy(GameObject badguy)
@@ -140,4 +162,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
     }
+
+    public void SetupCharacter(Character character)
+    {
+        character.Collided += Character_Collided;
+    }
+
+    public void SetupScene()
+    {
+        LifeCount.Instance.Text = Player.Instance.HealthPoints.ToString();
+        RandomizeBoxHearts();
+    }
+
 }

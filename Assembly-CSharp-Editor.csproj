@@ -862,6 +862,9 @@
     <Reference Include="Unity.VisualScripting.State">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Rider.Editor">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">

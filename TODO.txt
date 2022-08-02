@@ -1,0 +1,4 @@
+Scene cleanup. DONE
+Player must be able to set bomb fire direction.
+Added music - DONE
+Bomb smoke should not kill. DONE
