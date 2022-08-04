@@ -3,3 +3,5 @@ Player must be able to set bomb fire direction.
 Added music - DONE
 Bomb smoke should not kill. DONE
 Add hearts in boxes. DONE
+Add item sound effects e.g bomb explosion.
+Add follow-player logic to enemy.

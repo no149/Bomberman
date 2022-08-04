@@ -54,17 +54,9 @@ public class GameManager : MonoBehaviour
         var heartsCount = (int)(boxes.Length * (0.3 / _levelNo));
         print("boxes count:" + boxes.Length);
         System.Random rand = new System.Random();
-        // var prevNums=new HashSet<int>();
         for (int i = 0; i < heartsCount; i++)
         {
             var heartNo = rand.Next(heartsCount);
-
-            // if(prevNums.Contains(heartNo))
-            //     {
-            //         i--;
-            //         continue;
-            //     }
-            //prevNums.Add(heartNo);
             boxes[heartNo].HasHeart = true;
             print("set box heart");
         }

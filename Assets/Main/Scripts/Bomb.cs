@@ -13,6 +13,7 @@ public class Bomb : Hazard
         Super = 5
     }
 
+    public int DangerFactor;
     public int ExplosionWindow;
 
     public event EventHandler<GameObject> ObjectHit;

@@ -51,10 +51,16 @@ public class Player : Character
         {
             if (!(!CanSpawnMultipleBombs && _detonatingBombs > 0))
             {
+                Quaternion rotation = Quaternion.identity;
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    rotation = Quaternion.Euler(0, 0, 90);
+                    print(rotation);
+                }
                 var bomb =
                     Instantiate(Bomb,
                     gameObject.transform.position,
-                    Quaternion.identity);
+                    rotation);
                 bomb.Detonated += Bomb_Detonated;
                 bomb.ObjectHit += Bomb_Hit;
                 _detonatingBombs++;
