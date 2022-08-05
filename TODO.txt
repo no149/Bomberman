@@ -5,4 +5,4 @@ Bomb smoke should not kill. DONE
 Add hearts in boxes. DONE
 Add item sound effects e.g bomb explosion.
 Add follow-player logic to enemy.
-Add proper bomb animation using sprites.
+Add proper bomb animation using sprites. DONE

@@ -61,23 +61,12 @@ public class Player : Character
 
     void SpawnBomb()
     {
-        var multiDirectionalBomb = false;
         if (!(!CanSpawnMultipleBombs && _detonatingBombs > 0))
         {
-            Quaternion rotation = Quaternion.identity;
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                rotation = Quaternion.Euler(0, 0, 90);
-            }
-            else if (Input.GetKeyDown(KeyCode.X) && CanSpawnMultiDirectionalBomb())
-            {
-                print("multi directional bomb");
-                multiDirectionalBomb = true;
-            }
             var bomb =
                 Instantiate(Bomb,
                 gameObject.transform.position,
-                rotation);
+                Quaternion.identity);
             bomb.Detonated += Bomb_Detonated;
             bomb.ObjectHit += Bomb_Hit;
             _detonatingBombs++;
