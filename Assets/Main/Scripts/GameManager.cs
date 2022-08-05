@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject Exit;
     public GameObject HeartPrefab;
     public GameObject BoxPrefab;
-    int _levelNo = 1;
+    internal int LevelNo = 1;
     List<Box> _boxes = new List<Box>(10);
     event EventHandler<Box> _boxAdded;
     public static GameManager GameManagerInstance
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         var breakables = GameObject.FindGameObjectsWithTag("Breakable");
         var boxes = breakables.Where(b => b.GetComponent<Box>() != null).Select(b => b.GetComponent<Box>()).ToArray();
-        var heartsCount = (int)(boxes.Length * (0.3 / _levelNo));
+        var heartsCount = (int)(boxes.Length * (0.3 / LevelNo));
         print("boxes count:" + boxes.Length);
         System.Random rand = new System.Random();
         for (int i = 0; i < heartsCount; i++)

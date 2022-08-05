@@ -10,7 +10,6 @@ public class Bomb : Hazard
         Low = 1,
         Medium = 2,
         High = 3,
-        Super = 5
     }
 
     public int DangerFactor;
@@ -27,8 +26,6 @@ public class Bomb : Hazard
     bool _fuming;
 
     bool _detonated;
-
-    GameObject _lastCollidedObject;
 
     public const string TagName = "Bomb";
 
@@ -52,8 +49,6 @@ public class Bomb : Hazard
                     return 1.7f;
                 case HitRadius.High:
                     return 2f;
-                case HitRadius.Super:
-                    return 3f;
                 default:
                     return 0;
             }
@@ -90,9 +85,7 @@ public class Bomb : Hazard
     // Update is called once per frame
     void Update()
     {
-        _animator
-            .SetBool("Done",
-            gameObject.transform.localScale.y >= (float)RayHitRadius * .3);
+
     }
 
     void Fume_Started()
@@ -102,13 +95,10 @@ public class Bomb : Hazard
 
     void Detonate()
     {
-        print("detonated");
+        print("detonated:" + RayHitRadius);
         _detonated = true;
-        var boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        var circleCollider2D = gameObject.GetComponent<CircleCollider2D>();
-        boxCollider2D.enabled = true;
-        circleCollider2D.enabled = false;
         _animator.SetBool("Detonated", true);
+        _animator.SetInteger("HitRadius", (int)RayHitRadius);
         if (Detonated != null) Detonated(this, EventArgs.Empty);
     }
 

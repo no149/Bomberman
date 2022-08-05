@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 4408855668245860740}
   - component: {fileID: 4408855668245860741}
   - component: {fileID: 4408855668245860738}
-  - component: {fileID: 3894405111860146482}
   m_Layer: 6
-  m_Name: Bomb 1
+  m_Name: Bomb1
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +142,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3045232}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5251318
 --- !u!114 &4408855668245860738
@@ -160,30 +159,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DangerFactor: 1
   ExplosionWindow: 3
-  RayHitRadius: 1
---- !u!61 &3894405111860146482
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4408855668245860856}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3125, y: 2}
-    newSize: {x: 1.4375, y: 1.9375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3}
-  m_EdgeRadius: 0
+  RayHitRadius: 2

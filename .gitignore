@@ -8,3 +8,4 @@ UserSettings/
 .vscode/
 obj/
 TODO.txt
+*.blob
