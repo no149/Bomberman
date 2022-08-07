@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject Exit;
     public GameObject HeartPrefab;
     public GameObject BoxPrefab;
+
     internal int LevelNo = 1;
     List<Box> _boxes = new List<Box>(10);
     event EventHandler<Box> _boxAdded;
@@ -29,7 +30,6 @@ public class GameManager : MonoBehaviour
     {
         get; private set;
     }
-
     void Awake()
     {
         if (GameManagerInstance != null && GameManagerInstance != this)
@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         Player.Instance.Died += Player_Died;
         Player.Instance.BombSpawned += Bomb_Spawned;
     }
+
+
 
     private void RandomizeBoxHearts()
     {
@@ -137,7 +139,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Player_Harmed(int currentHealthPoints)
-    {
+    {//
         print("Player_Harmed called:" + currentHealthPoints);
         LifeCount.Instance.Text = currentHealthPoints.ToString();
         if (currentHealthPoints == 0 && GameEndedCanvas != null) EndGame(GameEndReason.PlayerDied);

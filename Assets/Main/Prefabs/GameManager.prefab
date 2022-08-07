@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4c6da9fe53f8250b51e730da6cc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameFinishedCanvas: {fileID: 0}
+  GameEndedCanvas: {fileID: 0}
   FinishText: {fileID: 0}
   Exit: {fileID: 0}
+  HeartPrefab: {fileID: 3591079573816392619, guid: 5c5301dfee4def38eac00d05f3deabea, type: 3}
+  BoxPrefab: {fileID: 2981954876851747403, guid: 31a027e419d7f2ffdb52634530ee5ec8, type: 3}

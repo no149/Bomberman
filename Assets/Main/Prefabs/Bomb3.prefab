@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DangerFactor: 3
   ExplosionWindow: 3
-  RayHitRadius: 1
+  RayHitRadius: 3
 --- !u!61 &3894405111860146482
 BoxCollider2D:
   m_ObjectHideFlags: 0

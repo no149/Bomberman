@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Bomb : Hazard
 {
+    public enum BombType
+    {
+        Type1,
+        Type2,
+        Type3,
+    }
     public enum HitRadius
     {
         Low = 1,
@@ -12,7 +18,8 @@ public class Bomb : Hazard
         High = 3,
     }
 
-    public int DangerFactor;
+
+    public BombType Type;
     public int ExplosionWindow;
 
     public event EventHandler<GameObject> ObjectHit;
@@ -20,14 +27,11 @@ public class Bomb : Hazard
     public event EventHandler Detonated;
 
     public HitRadius RayHitRadius;
+    public const string TagName = "Bomb";
 
     Animator _animator;
-
     bool _fuming;
-
     bool _detonated;
-
-    public const string TagName = "Bomb";
 
     public override bool CanKill
     {
@@ -54,6 +58,7 @@ public class Bomb : Hazard
             }
         }
     }
+
 
     // Start is called before the first frame update
     void Start()

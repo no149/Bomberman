@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player : Character
 {
@@ -10,6 +11,7 @@ public class Player : Character
     int _detonatingBombs;
 
     public Bomb Bomb;
+    public BombTypeCount[] Bombs;
 
     public bool CanSpawnMultipleBombs;
     public float movementSpeed = 3.0f;
@@ -18,6 +20,13 @@ public class Player : Character
 
     public event EventHandler<Bomb> BombSpawned;
 
+    bool CanSpawnBomb
+    {
+        get
+        {
+            return Bombs.Any(b => b.Count > 0);
+        }
+    }
     internal static Player Instance
     {
         get
@@ -61,7 +70,7 @@ public class Player : Character
 
     void SpawnBomb()
     {
-        if (!(!CanSpawnMultipleBombs && _detonatingBombs > 0))
+        if (CanSpawnBomb && !(!CanSpawnMultipleBombs && _detonatingBombs > 0))
         {
             var bomb =
                 Instantiate(Bomb,
@@ -70,6 +79,9 @@ public class Player : Character
             bomb.Detonated += Bomb_Detonated;
             bomb.ObjectHit += Bomb_Hit;
             _detonatingBombs++;
+            var bombCount = Bombs.Single(b => b.BombType == bomb.Type);
+            if (bombCount.Count > 0)
+                bombCount.Count--;
             if (BombSpawned != null) BombSpawned(this, bomb);
         }
     }
