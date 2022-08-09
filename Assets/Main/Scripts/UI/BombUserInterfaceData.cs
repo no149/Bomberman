@@ -5,7 +5,7 @@ public class BombUserInterfaceData
 
     public IEnumerable<BombTypeCount> BombTypesCount { get; set; }
 
-    public int this[Bomb.BombType type]
+    public int this[Bomb.BombPower type]
     {
         get
         {

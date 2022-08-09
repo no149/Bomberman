@@ -31,9 +31,9 @@ class BombHUD : MonoBehaviour
         var bomb2CountTxt = Bomb2Panel.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
         var bomb3CountTxt = Bomb3Panel.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
 
-        bomb1CountTxt.text = _currentData[Bomb.BombType.Type1].ToString();
-        bomb2CountTxt.text = _currentData[Bomb.BombType.Type2].ToString();
-        bomb3CountTxt.text = _currentData[Bomb.BombType.Type3].ToString();
+        bomb1CountTxt.text = _currentData[Bomb.BombPower.Low].ToString();
+        bomb2CountTxt.text = _currentData[Bomb.BombPower.Mid].ToString();
+        bomb3CountTxt.text = _currentData[Bomb.BombPower.High].ToString();
     }
 
     void Start()
@@ -43,21 +43,21 @@ class BombHUD : MonoBehaviour
         Player.Instance.SelectedBombChanged += CurrentBombChanged;
     }
 
-    void CurrentBombChanged(object sender, Bomb.BombType type)
+    void CurrentBombChanged(object sender, Bomb.BombPower type)
     {
         switch (type)
         {
-            case Bomb.BombType.Type1:
+            case Bomb.BombPower.Low:
                 Bomb1Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xEA, 0xE7, 0x29, 0xff);
                 Bomb2Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xff, 0xff, 0xff, 0xff);
                 Bomb3Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xff, 0xff, 0xff, 0xff);
                 break;
-            case Bomb.BombType.Type2:
+            case Bomb.BombPower.Mid:
                 Bomb2Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xEA, 0xE7, 0x29, 0xff);
                 Bomb1Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xff, 0xff, 0xff, 0xff);
-                Bomb3Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xff, 0xff, 0xff, 0xff); 
+                Bomb3Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xff, 0xff, 0xff, 0xff);
                 break;
-            case Bomb.BombType.Type3:
+            case Bomb.BombPower.High:
                 Bomb3Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xEA, 0xE7, 0x29, 0xff);
                 Bomb2Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xff, 0xff, 0xff, 0xff);
                 Bomb1Panel.GetComponent<UnityEngine.UI.Image>().color = new Color32(0xff, 0xff, 0xff, 0xff);

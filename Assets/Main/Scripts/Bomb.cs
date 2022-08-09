@@ -5,28 +5,21 @@ using UnityEngine;
 
 public class Bomb : Hazard
 {
-    public enum BombType
-    {
-        Type1,
-        Type2,
-        Type3,
-    }
-    public enum HitRadius
+    public enum BombPower
     {
         Low = 1,
-        Medium = 2,
-        High = 3,
+        Mid,
+        High,
     }
 
 
-    public BombType Type;
+    public BombPower Power;
     public int ExplosionWindow;
 
     public event EventHandler<GameObject> ObjectHit;
 
     public event EventHandler Detonated;
 
-    public HitRadius RayHitRadius;
     public const string TagName = "Bomb";
 
     Animator _animator;
@@ -45,13 +38,13 @@ public class Bomb : Hazard
     {
         get
         {
-            switch (RayHitRadius)
+            switch (Power)
             {
-                case HitRadius.Low:
+                case BombPower.Low:
                     return 1.5f;
-                case HitRadius.Medium:
+                case BombPower.Mid:
                     return 1.7f;
-                case HitRadius.High:
+                case BombPower.High:
                     return 2f;
                 default:
                     return 0;
@@ -100,10 +93,9 @@ public class Bomb : Hazard
 
     void Detonate()
     {
-        print("detonated:" + RayHitRadius);
         _detonated = true;
         _animator.SetBool("Detonated", true);
-        _animator.SetInteger("HitRadius", (int)RayHitRadius);
+        _animator.SetInteger("HitRadius", (int)Power);
         if (Detonated != null) Detonated(this, EventArgs.Empty);
     }
 

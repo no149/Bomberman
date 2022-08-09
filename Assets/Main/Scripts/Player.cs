@@ -20,7 +20,7 @@ public class Player : Character
     public const string AntagonistTagName = "BadGuy";
 
     public event EventHandler<Bomb> BombSpawned;
-    public event EventHandler<Bomb.BombType> SelectedBombChanged;
+    public event EventHandler<Bomb.BombPower> SelectedBombChanged;
 
     bool CanSpawnBomb
     {
@@ -56,10 +56,10 @@ public class Player : Character
         AvailableBombs = new BombTypeCount[BombPrefabs.Length];
         for (var i = 0; i < BombPrefabs.Length; i++)
         {
-            if (BombPrefabs[i].Type == Bomb.BombType.Type1)
-                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Type, Count = 4 };
+            if (BombPrefabs[i].Power == Bomb.BombPower.Low)
+                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 4 };
             else
-                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Type, Count = 0 };
+                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 0 };
         }
     }
 
@@ -79,26 +79,26 @@ public class Player : Character
         else if (Input.GetKey(KeyCode.RightAlt) && (Input.GetKeyDown(KeyCode.Alpha1) ||
         Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)))
         {
-            Bomb.BombType bombType = Bomb.BombType.Type1;
+            Bomb.BombPower bombType = Bomb.BombPower.Low;
             if (Input.GetKeyDown(KeyCode.Alpha1))
-                bombType = Bomb.BombType.Type1;
+                bombType = Bomb.BombPower.Low;
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                bombType = Bomb.BombType.Type2;
+                bombType = Bomb.BombPower.Mid;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
-                bombType = Bomb.BombType.Type3;
+                bombType = Bomb.BombPower.High;
 
             if (BombPrefabs != null)
             {
                 var candidateBomb = AvailableBombs.Single(b => b.BombType == bombType);
                 if (candidateBomb.Count > 0)
                 {
-                    SelectedBomb = BombPrefabs.SingleOrDefault(b => b.Type == bombType);
+                    SelectedBomb = BombPrefabs.SingleOrDefault(b => b.Power == bombType);
                     if (SelectedBomb == null)
                         throw new InvalidOperationException($"No Bomb prefab for bomb {bombType} is defined.");
                     if (SelectedBombChanged != null)
-                        SelectedBombChanged(this, SelectedBomb.Type);
+                        SelectedBombChanged(this, SelectedBomb.Power);
                 }
             }
         }
@@ -118,7 +118,7 @@ public class Player : Character
             bomb.Detonated += Bomb_Detonated;
             bomb.ObjectHit += Bomb_Hit;
             _detonatingBombs++;
-            var bombCount = AvailableBombs.Single(b => b.BombType == bomb.Type);
+            var bombCount = AvailableBombs.Single(b => b.BombType == bomb.Power);
             if (bombCount.Count > 0)
                 bombCount.Count--;
             if (BombSpawned != null) BombSpawned(this, bomb);
