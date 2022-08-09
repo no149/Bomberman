@@ -6,5 +6,6 @@ Add hearts in boxes. DONE
 Add item sound effects e.g bomb explosion.
 Add follow-player logic to enemy.
 Add proper bomb animation using sprites. DONE
-Add bomb variety and related HUD.
+Add bomb variety.
+Add bomb HUD. DONE
 Make trees fall and burn upon being hit by bombs.

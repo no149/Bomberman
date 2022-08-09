@@ -10,8 +10,9 @@ public class Player : Character
     MovementController _movementController;
     int _detonatingBombs;
 
-    public Bomb Bomb;
-    public BombTypeCount[] Bombs;
+    public Bomb[] BombPrefabs;
+    internal Bomb SelectedBomb;
+    internal BombTypeCount[] AvailableBombs;
 
     public bool CanSpawnMultipleBombs;
     public float movementSpeed = 3.0f;
@@ -19,12 +20,13 @@ public class Player : Character
     public const string AntagonistTagName = "BadGuy";
 
     public event EventHandler<Bomb> BombSpawned;
+    public event EventHandler<Bomb.BombType> SelectedBombChanged;
 
     bool CanSpawnBomb
     {
         get
         {
-            return Bombs.Any(b => b.Count > 0);
+            return AvailableBombs.Any(b => b.Count > 0);
         }
     }
     internal static Player Instance
@@ -51,6 +53,14 @@ public class Player : Character
         base.Start();
         _movementController = new MovementController(GetComponent<Animator>(), GetComponent<Rigidbody2D>(),
         movementSpeed);
+        AvailableBombs = new BombTypeCount[BombPrefabs.Length];
+        for (var i = 0; i < BombPrefabs.Length; i++)
+        {
+            if (BombPrefabs[i].Type == Bomb.BombType.Type1)
+                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Type, Count = 4 };
+            else
+                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Type, Count = 0 };
+        }
     }
 
     // Update is called once per frame
@@ -66,20 +76,49 @@ public class Player : Character
         {
             SpawnBomb();
         }
+        else if (Input.GetKey(KeyCode.RightAlt) && (Input.GetKeyDown(KeyCode.Alpha1) ||
+        Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)))
+        {
+            Bomb.BombType bombType = Bomb.BombType.Type1;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                bombType = Bomb.BombType.Type1;
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                bombType = Bomb.BombType.Type2;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+                bombType = Bomb.BombType.Type3;
+
+            if (BombPrefabs != null)
+            {
+                var candidateBomb = AvailableBombs.Single(b => b.BombType == bombType);
+                if (candidateBomb.Count > 0)
+                {
+                    SelectedBomb = BombPrefabs.SingleOrDefault(b => b.Type == bombType);
+                    if (SelectedBomb == null)
+                        throw new InvalidOperationException($"No Bomb prefab for bomb {bombType} is defined.");
+                    if (SelectedBombChanged != null)
+                        SelectedBombChanged(this, SelectedBomb.Type);
+                }
+            }
+        }
     }
 
     void SpawnBomb()
     {
         if (CanSpawnBomb && !(!CanSpawnMultipleBombs && _detonatingBombs > 0))
         {
+            if (SelectedBomb == null)
+                return;
+
             var bomb =
-                Instantiate(Bomb,
+                Instantiate(SelectedBomb,
                 gameObject.transform.position,
                 Quaternion.identity);
             bomb.Detonated += Bomb_Detonated;
             bomb.ObjectHit += Bomb_Hit;
             _detonatingBombs++;
-            var bombCount = Bombs.Single(b => b.BombType == bomb.Type);
+            var bombCount = AvailableBombs.Single(b => b.BombType == bomb.Type);
             if (bombCount.Count > 0)
                 bombCount.Count--;
             if (BombSpawned != null) BombSpawned(this, bomb);
