@@ -89,8 +89,6 @@ public class BadGuy : Character
         float inputAngleRadians = _turnAngle * Mathf.Deg2Rad;
         _XmovementDirection = Mathf.Cos(inputAngleRadians);
         _YmovementDirection = Mathf.Sin(inputAngleRadians);
-        print("_YmovementDirection:" + _YmovementDirection);
-        print("_turnAngle:" + _turnAngle);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -116,16 +114,17 @@ public class BadGuy : Character
                 _animator.SetBool("Running", false);
                 _currentSpeed = BaseSpeed;
             }
-            var curpos = gameObject.transform.position;    
+            var curpos = gameObject.transform.position;
             //To prevent warbling in place, because of frame-rate.
             var changeDirCoef = 1f;
-            if (curpos == _lastPos)
+            var curPosRounded = curpos.Round(2);
+            if (curPosRounded == _lastPos)
             {
                 SetMoveDirection(false);
                 changeDirCoef = 1.1f;
             }
 
-            _lastPos = curpos;
+            _lastPos = curPosRounded;
             _rb2D.velocity = new Vector2(_currentSpeed * _XmovementDirection * changeDirCoef,
                     _currentSpeed * _YmovementDirection * changeDirCoef);
         }

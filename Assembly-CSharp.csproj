@@ -47,6 +47,7 @@
      <Compile Include="Assets/Main/Scripts/UI/BombUserInterfaceData.cs" />
      <Compile Include="Assets/Main/Scripts/GameManager.cs" />
      <Compile Include="Assets/Main/Scripts/Player.cs" />
+     <Compile Include="Assets/Main/Scripts/Utility/Extensions.cs" />
      <Compile Include="Assets/Main/Scripts/BadGuy.cs" />
      <Compile Include="Assets/Main/Scripts/Collision/CollisionData.cs" />
      <Compile Include="Assets/Main/Scripts/Breakable.cs" />
