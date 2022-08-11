@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             if (collisionData.IsTrigger && collidedObject.tag == HazardTagName)
                 Player.Instance.Die(false);
 
-            else if (collidedObject.tag == Player.AntagonistTagName)
+            else if (collidedObject.tag == Player.AntagonistTagName && !collisionData.IsTrigger)
             {
                 HarmPlayer((Player)sender, collidedObject.GetComponent<BadGuy>().DamagePower);
             }

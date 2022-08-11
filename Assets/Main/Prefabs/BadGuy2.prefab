@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9076128486532487934}
   - component: {fileID: 975371783}
   - component: {fileID: 975371775}
+  - component: {fileID: -3884850421473182417}
   m_Layer: 3
   m_Name: BadGuy2
   m_TagString: BadGuy
@@ -168,8 +169,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthPoints: 1
-  respawnable: 0
   DamagePower: 1
   MovementDirection: 1
-  Speed: 1.5
-  StraightWalker: 0
+  BaseSpeed: 2
+  FollowPlayer: 1
+--- !u!58 &-3884850421473182417
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076128486532487933}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 12
