@@ -17,7 +17,7 @@ public class BadGuy : Character
     public float BaseSpeed = 3;
 
     // whether it can only walk straight until it hits a block.
-    public bool FollowPlayer = true;
+    public bool ChasePlayer = true;
 
     public const string TagName = "BadGuy";
 
@@ -39,12 +39,11 @@ public class BadGuy : Character
 
     float _turnAngle;
 
-    int _turnAngleCoefficient = 1;
 
     private Vector3 _lastPos;
     Transform _antagonistTransform;
     bool _antagonistInSight;
-    private Coroutine _followAntagonistRoutine;
+    private Coroutine _chaseAntagonistRoutine;
     float _currentSpeed;
 
     // Start is called before the first frame update
@@ -88,10 +87,10 @@ public class BadGuy : Character
             }
         }
         float inputAngleRadians = _turnAngle * Mathf.Deg2Rad;
-        _XmovementDirection =
-            _turnAngleCoefficient * Mathf.Cos(inputAngleRadians);
-        _YmovementDirection =
-            _turnAngleCoefficient * Mathf.Sin(inputAngleRadians);
+        _XmovementDirection = Mathf.Cos(inputAngleRadians);
+        _YmovementDirection = Mathf.Sin(inputAngleRadians);
+        print("_YmovementDirection:" + _YmovementDirection);
+        print("_turnAngle:" + _turnAngle);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -101,24 +100,23 @@ public class BadGuy : Character
 
     private void Move()
     {
-        if (_antagonistInSight && FollowPlayer)
+        if (_antagonistInSight && ChasePlayer)
         {
             _currentSpeed = BaseSpeed * 1.2f; //pursuitSpeed;            
             _animator.SetBool("Running", true);
-            if (_followAntagonistRoutine == null)
-                _followAntagonistRoutine = StartCoroutine(FollowAntagonist());
+            if (_chaseAntagonistRoutine == null)
+                _chaseAntagonistRoutine = StartCoroutine(ChaseAntagonist());
         }
         else
         {
-            if (_followAntagonistRoutine != null)
+            if (_chaseAntagonistRoutine != null)
             {
-                StopCoroutine(_followAntagonistRoutine);
-                _followAntagonistRoutine = null;
+                StopCoroutine(_chaseAntagonistRoutine);
+                _chaseAntagonistRoutine = null;
                 _animator.SetBool("Running", false);
                 _currentSpeed = BaseSpeed;
             }
-            var curpos = gameObject.transform.position;
-
+            var curpos = gameObject.transform.position;    
             //To prevent warbling in place, because of frame-rate.
             var changeDirCoef = 1f;
             if (curpos == _lastPos)
@@ -128,13 +126,12 @@ public class BadGuy : Character
             }
 
             _lastPos = curpos;
-            print("_currentSpeed:" + _currentSpeed);
             _rb2D.velocity = new Vector2(_currentSpeed * _XmovementDirection * changeDirCoef,
                     _currentSpeed * _YmovementDirection * changeDirCoef);
         }
     }
 
-    private IEnumerator FollowAntagonist()
+    private IEnumerator ChaseAntagonist()
     {
         var endPosition = _antagonistTransform.position;
         float remainingDistance =
@@ -159,7 +156,7 @@ public class BadGuy : Character
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        if (collision.gameObject.CompareTag(AntagonistTagName) && FollowPlayer)
+        if (collision.gameObject.CompareTag(AntagonistTagName) && ChasePlayer)
         {
             _antagonistTransform = collision.gameObject.transform;
             _antagonistInSight = true;
