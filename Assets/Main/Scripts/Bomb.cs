@@ -26,6 +26,8 @@ public class Bomb : Hazard
     bool _fuming;
     bool _detonated;
 
+    public override SoundEmitter SoundEmitter => new BombSoundEmitter(GetComponent<AudioSource>(), this);
+
     public override bool CanKill
     {
         get
@@ -52,13 +54,13 @@ public class Bomb : Hazard
         }
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("OnTimedEvent", 0, 1);
         _animator = GetComponent<Animator>();
         _animator.SetFloat("SpeedMultiplier", SpeedMultiplier);
+        SoundEmitter.Init();
     }
 
     private void OnTimedEvent()

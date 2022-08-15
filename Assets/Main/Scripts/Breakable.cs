@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Breakable : MonoBehaviour
+public abstract class Breakable : BombermanGameObject
 {
 
 

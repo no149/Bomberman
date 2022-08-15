@@ -47,6 +47,8 @@ public class Player : Character
         }
     }
 
+    public override SoundEmitter SoundEmitter => new PlayerSoundEmitter(GetComponent<AudioSource>(), this);
+
     // Start is called before the first frame update
     protected override void Start()
     {

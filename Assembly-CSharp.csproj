@@ -38,13 +38,17 @@
   <ItemGroup>
      <Compile Include="Assets/Main/Scripts/LifeCount.cs" />
      <Compile Include="Assets/Main/Scripts/UI/BombTypeCount.cs" />
+     <Compile Include="Assets/Main/Scripts/Sound/BombSoundEmitter.cs" />
      <Compile Include="Assets/Main/Scripts/UI/BombHUD.cs" />
      <Compile Include="Assets/Main/Scripts/MovementController.cs" />
      <Compile Include="Assets/Main/Scripts/Hazard.cs" />
      <Compile Include="Assets/Main/Scripts/Character.cs" />
+     <Compile Include="Assets/Main/Scripts/Sound/PlayerSoundEmitter.cs" />
      <Compile Include="Assets/Main/Scripts/Box.cs" />
      <Compile Include="Assets/Main/Sprites/TopDown 2D RPG BE3/ReadMe/Scripts/ReadmeBE3.cs" />
+     <Compile Include="Assets/Main/Scripts/BombermanGameObject.cs" />
      <Compile Include="Assets/Main/Scripts/UI/BombUserInterfaceData.cs" />
+     <Compile Include="Assets/Main/Scripts/Sound/SoundEmitter.cs" />
      <Compile Include="Assets/Main/Scripts/GameManager.cs" />
      <Compile Include="Assets/Main/Scripts/Player.cs" />
      <Compile Include="Assets/Main/Scripts/Utility/Extensions.cs" />

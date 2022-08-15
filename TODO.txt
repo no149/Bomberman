@@ -12,3 +12,4 @@ Add bomb HUD. DONE
 Make trees fall and burn upon being hit by bombs.
 Add physics to bomb explosions such that hitting objects reduces its power to hit consequent objects.
 Add a condition based on which a path to the exit door must be non-passable until it is satisfied. e.g all badguys must be killed.
+Add manual bomb detonation.

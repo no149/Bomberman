@@ -31,6 +31,8 @@ public class BadGuy : Character
         }
     }
 
+    public override SoundEmitter SoundEmitter => null;
+
     Rigidbody2D _rb2D;
     Animator _animator;
     float _XmovementDirection = 0;
