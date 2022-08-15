@@ -63,6 +63,7 @@ public class Player : Character
             else
                 AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 0 };
         }
+        SoundEmitter.Init();
     }
 
     // Update is called once per frame

@@ -12,7 +12,6 @@ public class BombSoundEmitter : SoundEmitter
 
     private void Detonated(object sender, EventArgs e)
     {
-        Debug.Log("emitting bomb explosion sound...");
         EmitSound(DetonatedEventName);
     }
 
