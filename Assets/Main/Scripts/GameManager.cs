@@ -162,6 +162,15 @@ public class GameManager : MonoBehaviour
         }
         GameEndedCanvas.SetActive(true);
     }
+    void HideIntroCanvas()
+    {
+        var introCanvas = GameObject.Find("IntroCanvas");
+        introCanvas.SetActive(false);
+    }
+    private void SetupIntroCasvasTimer()
+    {
+        Invoke("HideIntroCanvas", 4);
+    }
 
     public void SetupCharacter(Character character)
     {
@@ -172,6 +181,9 @@ public class GameManager : MonoBehaviour
     {
         LifeCount.Instance.Text = Player.Instance.HealthPoints.ToString();
         RandomizeBoxHearts();
+        if (LevelNo == 1)
+            SetupIntroCasvasTimer();
     }
+
 
 }

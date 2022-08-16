@@ -1,3 +1,4 @@
+Add starup intro canvas including controls guide.DONE
 Scene cleanup. DONE
 Player must be able to set bomb fire direction. DONE
 Added music - DONE
