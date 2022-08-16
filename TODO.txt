@@ -3,7 +3,7 @@ Player must be able to set bomb fire direction. DONE
 Added music - DONE
 Bomb smoke should not kill. DONE
 Add hearts in boxes. DONE
-Add item sound effects e.g bomb explosion.
+Add item sound effects e.g bomb explosion. DONE
 Add follow-player logic to badguy. DONE
 Add bomb-escaping badguy.
 Add proper bomb animation using sprites. DONE
@@ -13,3 +13,4 @@ Make trees fall and burn upon being hit by bombs.
 Add physics to bomb explosions such that hitting objects reduces its power to hit consequent objects.
 Add a condition based on which a path to the exit door must be non-passable until it is satisfied. e.g all badguys must be killed.
 Add manual bomb detonation.
+Make WebGL output. DONE
