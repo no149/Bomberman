@@ -79,7 +79,7 @@ public class Player : Character
         {
             SpawnBomb();
         }
-        else if (Input.GetKey(KeyCode.RightAlt) && (Input.GetKeyDown(KeyCode.Alpha1) ||
+        else if (Input.GetKey(KeyCode.RightControl) && (Input.GetKeyDown(KeyCode.Alpha1) ||
         Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)))
         {
             Bomb.BombPower bombType = Bomb.BombPower.Low;
