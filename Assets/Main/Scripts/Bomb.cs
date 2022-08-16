@@ -14,7 +14,7 @@ public class Bomb : Hazard
 
 
     public BombPower Power;
-    public int ExplosionWindow;
+    public int DetonationWindow;
 
     public event EventHandler<GameObject> ObjectHit;
 
@@ -22,6 +22,7 @@ public class Bomb : Hazard
 
     public const string TagName = "Bomb";
 
+    internal bool ManualDetonation;
     Animator _animator;
     bool _fuming;
     bool _detonated;
@@ -54,10 +55,19 @@ public class Bomb : Hazard
         }
     }
 
+    internal void Detonate()
+    {
+        _detonated = true;
+        _animator.SetBool("Detonated", true);
+        _animator.SetInteger("HitRadius", (int)Power);
+        if (Detonated != null) Detonated(this, EventArgs.Empty);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("OnTimedEvent", 0, 1);
+        if (!ManualDetonation)
+            InvokeRepeating("OnTimedEvent", 0, 1);
         _animator = GetComponent<Animator>();
         _animator.SetFloat("SpeedMultiplier", SpeedMultiplier);
         SoundEmitter.Init();
@@ -65,8 +75,8 @@ public class Bomb : Hazard
 
     private void OnTimedEvent()
     {
-        ExplosionWindow--;
-        if (ExplosionWindow < 1)
+        DetonationWindow--;
+        if (DetonationWindow < 1)
         {
             CancelInvoke();
             Detonate();
@@ -93,13 +103,6 @@ public class Bomb : Hazard
         _fuming = true;
     }
 
-    void Detonate()
-    {
-        _detonated = true;
-        _animator.SetBool("Detonated", true);
-        _animator.SetInteger("HitRadius", (int)Power);
-        if (Detonated != null) Detonated(this, EventArgs.Empty);
-    }
 
     void Fume_Over()
     {

@@ -8,7 +8,6 @@ public class Player : Character
 {
     private static Player _instance;
     MovementController _movementController;
-    int _detonatingBombs;
 
     public Bomb[] BombPrefabs;
     internal Bomb SelectedBomb;
@@ -16,12 +15,21 @@ public class Player : Character
 
     public bool CanSpawnMultipleBombs;
     public float movementSpeed = 3.0f;
-
+    private Queue<Bomb> _spawnedAutoBombs = new Queue<Bomb>();
+    private Queue<Bomb> _spawnedManualBombs = new Queue<Bomb>();
     public const string AntagonistTagName = "BadGuy";
 
     public event EventHandler<Bomb> BombSpawned;
     public event EventHandler<Bomb.BombPower> SelectedBombChanged;
 
+
+    int SpawnedBombsCount
+    {
+        get
+        {
+            return _spawnedManualBombs.Count + _spawnedAutoBombs.Count;
+        }
+    }
     bool CanSpawnBomb
     {
         get
@@ -75,10 +83,12 @@ public class Player : Character
 
     private void ProcessKeyInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnBomb();
-        }
+        if (Input.GetKeyDown(KeyCode.Z))
+            SpawnBomb(true);
+        else if (Input.GetKeyDown(KeyCode.X))
+            SpawnBomb(false);
+        else if (Input.GetKeyDown(KeyCode.Space))
+            DetonateBomb();
         else if (Input.GetKey(KeyCode.RightControl) && (Input.GetKeyDown(KeyCode.Alpha1) ||
         Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)))
         {
@@ -105,11 +115,21 @@ public class Player : Character
                 }
             }
         }
+
     }
 
-    void SpawnBomb()
+    private void DetonateBomb()
     {
-        if (CanSpawnBomb && !(!CanSpawnMultipleBombs && _detonatingBombs > 0))
+        if (_spawnedManualBombs.Count > 0)
+        {
+            var bomb = _spawnedManualBombs.Peek();
+            bomb.Detonate();
+        }
+    }
+
+    void SpawnBomb(bool manual)
+    {
+        if (CanSpawnBomb && !(!CanSpawnMultipleBombs && SpawnedBombsCount > 0))
         {
             if (SelectedBomb == null)
                 return;
@@ -118,15 +138,26 @@ public class Player : Character
                 Instantiate(SelectedBomb,
                 gameObject.transform.position,
                 Quaternion.identity);
+            bomb.ManualDetonation = manual;
+            EnqueueBomb(bomb);
+
             bomb.Detonated += Bomb_Detonated;
             bomb.ObjectHit += Bomb_Hit;
-            _detonatingBombs++;
             var bombCount = AvailableBombs.Single(b => b.BombType == bomb.Power);
             if (bombCount.Count > 0)
                 bombCount.Count--;
             if (BombSpawned != null) BombSpawned(this, bomb);
         }
     }
+
+    private void EnqueueBomb(Bomb bomb)
+    {
+        if (bomb.ManualDetonation)
+            _spawnedManualBombs.Enqueue(bomb);
+        else
+            _spawnedAutoBombs.Enqueue(bomb);
+    }
+
     private bool CanSpawnMultiDirectionalBomb()
     {
         return GameManager.GameManagerInstance.LevelNo > 0;
@@ -138,7 +169,15 @@ public class Player : Character
     }
     void Bomb_Detonated(object sender, EventArgs e)
     {
-        _detonatingBombs--;
+        DequeueBomb((Bomb)sender);
+    }
+
+    private void DequeueBomb(Bomb bomb)
+    {
+        if (bomb.ManualDetonation)
+            _spawnedManualBombs.Dequeue();
+        else
+            _spawnedAutoBombs.Dequeue();
     }
 
     void Bomb_Hit(object sender, GameObject hitObject)

@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Power: 2
-  ExplosionWindow: 3
+  DetonationWindow: 3
 --- !u!61 &3894405111860146482
 BoxCollider2D:
   m_ObjectHideFlags: 0

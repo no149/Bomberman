@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Power: 1
-  ExplosionWindow: 3
+  DetonationWindow: 3
 --- !u!82 &1289406885631804297
 AudioSource:
   m_ObjectHideFlags: 0

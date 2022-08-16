@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6276469159588866676
 SpriteRenderer:
@@ -169,7 +169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthPoints: 3
-  BombPrefabs: []
+  BombPrefabs:
+  - {fileID: 4408855668245860738, guid: f0b927110a09bc35dba4210db03d0733, type: 3}
+  - {fileID: 4408855668245860738, guid: 1894554a1ab410048af455e3d0f9c9ee, type: 3}
+  - {fileID: 4408855668245860738, guid: 7022192099fc66a2193d4eb3aeb06f9d, type: 3}
   CanSpawnMultipleBombs: 0
   movementSpeed: 3
 --- !u!82 &-131209042564538498
