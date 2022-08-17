@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
 
     void Character_Collided(object sender, CollisionData collisionData)
     {
+        if (sender is Player)
+            print(collisionData.CollidedGameObject.name);
         GameObject collidedObject = collisionData.CollidedGameObject;
         if (sender is Player)
         {
