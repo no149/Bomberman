@@ -168,10 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3064d17cfa409717ab62a10e3dace39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPoints: 1
-  DamagePower: 1
+  HealthPoints: 2
+  DamagePower: 2
   MovementDirection: 1
   BaseSpeed: 2
+  EscapeBomb: 0
   ChasePlayer: 0
 --- !u!58 &-3884850421473182417
 CircleCollider2D:

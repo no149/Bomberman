@@ -17,6 +17,7 @@ public class BadGuy : Character
     public float BaseSpeed = 3;
 
     // whether it can only walk straight until it hits a block.
+    public bool EscapeBomb;
     public bool ChasePlayer = true;
 
     public const string TagName = "BadGuy";
@@ -54,11 +55,11 @@ public class BadGuy : Character
         base.Start();
         _rb2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        SetMoveDirection(true);
+        ChangeMoveDirection(true);
         _currentSpeed = BaseSpeed;
     }
 
-    private void SetMoveDirection(bool init)
+    private void ChangeMoveDirection(bool init)
     {
         if (init)
             if (MovementDirection == MovementDirectionEnum.Horizontal)
@@ -122,7 +123,7 @@ public class BadGuy : Character
             var curPosRounded = curpos.Round(2);
             if (curPosRounded == _lastPos)
             {
-                SetMoveDirection(false);
+                ChangeMoveDirection(false);
                 changeDirCoef = 1.1f;
             }
 
@@ -162,8 +163,26 @@ public class BadGuy : Character
             _antagonistTransform = collision.gameObject.transform;
             _antagonistInSight = true;
         }
+        else if (collision.gameObject.CompareTag(Bomb.TagName) && EscapeBomb)
+        {
+            if (!IsBombBehind(collision.gameObject))
+                ChangeMoveDirection(false);
+        }
     }
 
+    bool IsBombBehind(GameObject bomb)
+    {
+        return MovementDirection == MovementDirectionEnum.Horizontal && !(
+                (bomb.gameObject.transform.position - transform.position).normalized.x > 0 &&
+            _XmovementDirection > 0 ||
+            (bomb.gameObject.transform.position - transform.position).normalized.x < 0 &&
+            _XmovementDirection < 0)
+            || MovementDirection == MovementDirectionEnum.Vertical && !(
+                (bomb.gameObject.transform.position - transform.position).normalized.y > 0 &&
+            _YmovementDirection > 0 ||
+            (bomb.gameObject.transform.position - transform.position).normalized.y < 0 &&
+            _YmovementDirection < 0);
+    }
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(AntagonistTagName))

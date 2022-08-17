@@ -172,7 +172,8 @@ MonoBehaviour:
   DamagePower: 2
   MovementDirection: 1
   BaseSpeed: 3
-  FollowPlayer: 1
+  EscapeBomb: 1
+  ChasePlayer: 1
 --- !u!58 &-8900856446339985135
 CircleCollider2D:
   m_ObjectHideFlags: 0
