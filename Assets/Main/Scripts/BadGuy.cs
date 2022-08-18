@@ -49,6 +49,20 @@ public class BadGuy : Character
     private Coroutine _chaseAntagonistRoutine;
     float _currentSpeed;
 
+    private MovementDirectionEnum CurrentDirection
+    {
+        get
+        {
+            if (MovementDirection != MovementDirectionEnum.Both)
+                return MovementDirection;
+            else
+            {
+                return _YmovementDirection == 0 && Mathf.Abs(_XmovementDirection) == 1 ? MovementDirectionEnum.Horizontal :
+                MovementDirectionEnum.Vertical;
+            }
+        }
+    }
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -172,12 +186,12 @@ public class BadGuy : Character
 
     bool IsBombBehind(GameObject bomb)
     {
-        return MovementDirection == MovementDirectionEnum.Horizontal && !(
+        return CurrentDirection == MovementDirectionEnum.Horizontal && !(
                 (bomb.gameObject.transform.position - transform.position).normalized.x > 0 &&
             _XmovementDirection > 0 ||
             (bomb.gameObject.transform.position - transform.position).normalized.x < 0 &&
             _XmovementDirection < 0)
-            || MovementDirection == MovementDirectionEnum.Vertical && !(
+            || CurrentDirection == MovementDirectionEnum.Vertical && !(
                 (bomb.gameObject.transform.position - transform.position).normalized.y > 0 &&
             _YmovementDirection > 0 ||
             (bomb.gameObject.transform.position - transform.position).normalized.y < 0 &&

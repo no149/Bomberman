@@ -7,7 +7,7 @@ Add hearts in boxes. DONE
 Add item sound effects e.g bomb explosion. DONE
 Add follow-player logic to badguy. DONE
 Add bomb-escaping badguy. DONE
-Fix player water collision.
+Fix player water collision? Player's head drawns it in water.
 Add proper bomb animation using sprites. DONE
 Add bomb variety.
 Add bomb HUD. DONE
