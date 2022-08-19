@@ -7,12 +7,12 @@ Add hearts in boxes. DONE
 Add item sound effects e.g bomb explosion. DONE
 Add follow-player logic to badguy. DONE
 Add bomb-escaping badguy. DONE
-Fix player water collision? Player's head drawns it in water.
 Add proper bomb animation using sprites. DONE
 Add bomb variety.
 Add bomb HUD. DONE
-Make trees fall and burn upon being hit by specific high-power bombs.
+Make trees fall upon being hit by particular bomb types.
 Add physics to bomb explosions such that hitting objects reduces its power to hit consequent objects.
-Add a condition based on which a path to the exit door must be non-passable until the condition is satisfied. e.g all badguys must be killed.
+Add a condition based on which a path to the exit door must be non-passable until the condition is satisfied. e.g all badguys must be killed. DONE
 Add manual bomb detonation. DONE
 Make WebGL output. DONE
+Add "smart" badguy who can find a path to the player.

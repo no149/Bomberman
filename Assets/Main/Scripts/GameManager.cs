@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     }
     private const string SpwanPointTagName = "SpawnPoint";
     private const string HazardTagName = "Hazard";
+    private const string ExitBridgeName = "ExitBridge";
+
 
     private static GameManager _gameManager;
 
@@ -24,7 +26,8 @@ public class GameManager : MonoBehaviour
     public GameObject BoxPrefab;
 
     internal int LevelNo = 1;
-    List<Box> _boxes = new List<Box>(10);
+    int _currentBadguysCount;
+    GameObject _exitBridge;
     event EventHandler<Box> _boxAdded;
     public static GameManager GameManagerInstance
     {
@@ -45,35 +48,58 @@ public class GameManager : MonoBehaviour
         SetupScene();
         Player.Instance.Died += Player_Died;
         Player.Instance.BombSpawned += Bomb_Spawned;
+        _exitBridge = GameObject.Find(ExitBridgeName);
+        SetBadguysCount();
+        ToggleExitBridgeActiveState();
     }
 
+    private void SetBadguysCount()
+    {
+        var badguys = GameObject.FindGameObjectsWithTag(BadGuy.TagName);
+        _currentBadguysCount = badguys.Length;
+        foreach (var badguy in badguys)
+        {
+            badguy.GetComponent<BadGuy>().Died += BadGuy_Died;
+        }
+    }
 
+    private void BadGuy_Died(object sender, bool reincarnate)
+    {
+        if (!reincarnate)
+            _currentBadguysCount--;
+        if (_currentBadguysCount == 0)
+            ToggleExitBridgeActiveState();
+    }
+
+    private void ToggleExitBridgeActiveState()
+    {
+        _exitBridge.SetActive(!_exitBridge.activeSelf);
+        var underlyingwater = GameObject.Find("WaterUnderBridge");
+        underlyingwater.SetActive(!_exitBridge.activeSelf);
+    }
 
     private void RandomizeBoxHearts()
     {
         var breakables = GameObject.FindGameObjectsWithTag("Breakable");
         var boxes = breakables.Where(b => b.GetComponent<Box>() != null).Select(b => b.GetComponent<Box>()).ToArray();
         var heartsCount = (int)(boxes.Length * (0.3 / LevelNo));
-        print("boxes count:" + boxes.Length);
         System.Random rand = new System.Random();
         for (int i = 0; i < heartsCount; i++)
         {
             var heartNo = rand.Next(heartsCount);
             boxes[heartNo].HasHeart = true;
-            print("set box heart");
         }
     }
 
     void Character_Collided(object sender, CollisionData collisionData)
     {
-        if (sender is Player)
-            print(collisionData.CollidedGameObject.name);
         GameObject collidedObject = collisionData.CollidedGameObject;
         if (sender is Player)
         {
             if (collisionData.IsTrigger && collidedObject.tag == HazardTagName)
+            {
                 Player.Instance.Die(false);
-
+            }
             else if (collidedObject.tag == Player.AntagonistTagName && !collisionData.IsTrigger)
             {
                 HarmPlayer((Player)sender, collidedObject.GetComponent<BadGuy>().DamagePower);
@@ -141,8 +167,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Player_Harmed(int currentHealthPoints)
-    {//
-        print("Player_Harmed called:" + currentHealthPoints);
+    {
         LifeCount.Instance.Text = currentHealthPoints.ToString();
         if (currentHealthPoints == 0 && GameEndedCanvas != null) EndGame(GameEndReason.PlayerDied);
     }
@@ -173,6 +198,7 @@ public class GameManager : MonoBehaviour
     {
         Invoke("HideIntroCanvas", 4);
     }
+
 
     public void SetupCharacter(Character character)
     {

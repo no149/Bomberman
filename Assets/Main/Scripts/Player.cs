@@ -67,7 +67,7 @@ public class Player : Character
         for (var i = 0; i < BombPrefabs.Length; i++)
         {
             if (BombPrefabs[i].Power == Bomb.BombPower.Low)
-                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 4 };
+                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 6 };
             else
                 AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 0 };
         }
