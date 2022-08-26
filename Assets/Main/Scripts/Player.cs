@@ -63,14 +63,6 @@ public class Player : Character
         base.Start();
         _movementController = new MovementController(GetComponent<Animator>(), GetComponent<Rigidbody2D>(),
         movementSpeed);
-        AvailableBombs = new BombTypeCount[BombPrefabs.Length];
-        for (var i = 0; i < BombPrefabs.Length; i++)
-        {
-            if (BombPrefabs[i].Power == Bomb.BombPower.Low)
-                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 6 };
-            else
-                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 0 };
-        }
         SoundEmitter.Init();
     }
 
@@ -191,5 +183,13 @@ public class Player : Character
     void Awake()
     {
         _instance = this;
+        AvailableBombs = new BombTypeCount[BombPrefabs.Length];
+        for (var i = 0; i < BombPrefabs.Length; i++)
+        {
+            if (BombPrefabs[i].Power == Bomb.BombPower.Low)
+                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 6 };
+            else
+                AvailableBombs[i] = new BombTypeCount() { BombType = BombPrefabs[i].Power, Count = 0 };
+        }
     }
 }
