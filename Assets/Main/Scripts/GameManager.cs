@@ -33,6 +33,30 @@ public class GameManager : MonoBehaviour
     {
         get; private set;
     }
+    public Box[] Boxes { get; private set; }
+
+
+
+
+    public void SetupCharacter(Character character)
+    {
+        character.Collided += Character_Collided;
+    }
+
+    public void SetupScene()
+    {
+        LifeCount.Instance.Text = Player.Instance.HealthPoints.ToString();
+        RandomizeBoxHearts();
+        if (LevelNo == 1)
+            SetupIntroCasvasTimer();
+    }
+
+    private void SetProperties()
+    {
+        var breakables = GameObject.FindGameObjectsWithTag("Breakable");
+        Boxes = breakables.Where(b => b.GetComponent<Box>() != null).Select(b => b.GetComponent<Box>()).ToArray();
+    }
+
     void Awake()
     {
         if (GameManagerInstance != null && GameManagerInstance != this)
@@ -41,7 +65,11 @@ public class GameManager : MonoBehaviour
         }
         else
             GameManagerInstance = this;
+
+        SetProperties();
     }
+
+
 
     void Start()
     {
@@ -59,7 +87,8 @@ public class GameManager : MonoBehaviour
         _currentBadguysCount = badguys.Length;
         foreach (var badguy in badguys)
         {
-            badguy.GetComponent<BadGuy>().Died += BadGuy_Died;
+            //TODO: undo
+            //  badguy.GetComponent<BadGuy>().Died += BadGuy_Died;
         }
     }
 
@@ -80,14 +109,12 @@ public class GameManager : MonoBehaviour
 
     private void RandomizeBoxHearts()
     {
-        var breakables = GameObject.FindGameObjectsWithTag("Breakable");
-        var boxes = breakables.Where(b => b.GetComponent<Box>() != null).Select(b => b.GetComponent<Box>()).ToArray();
-        var heartsCount = (int)(boxes.Length * (0.3 / LevelNo));
+        var heartsCount = (int)(Boxes.Length * (0.3 / LevelNo));
         System.Random rand = new System.Random();
         for (int i = 0; i < heartsCount; i++)
         {
             var heartNo = rand.Next(heartsCount);
-            boxes[heartNo].HasHeart = true;
+            Boxes[heartNo].HasHeart = true;
         }
     }
 
@@ -198,20 +225,4 @@ public class GameManager : MonoBehaviour
     {
         Invoke("HideIntroCanvas", 4);
     }
-
-
-    public void SetupCharacter(Character character)
-    {
-        character.Collided += Character_Collided;
-    }
-
-    public void SetupScene()
-    {
-        LifeCount.Instance.Text = Player.Instance.HealthPoints.ToString();
-        RandomizeBoxHearts();
-        if (LevelNo == 1)
-            SetupIntroCasvasTimer();
-    }
-
-
 }

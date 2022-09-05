@@ -36,28 +36,39 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Main/Scripts/Map/TileMapHelper.cs" />
      <Compile Include="Assets/Main/Scripts/LifeCount.cs" />
      <Compile Include="Assets/Main/Scripts/UI/BombTypeCount.cs" />
+     <Compile Include="Assets/Main/Scripts/BadGuy/BadGuyMovementController.cs" />
      <Compile Include="Assets/Main/Scripts/Sound/BombSoundEmitter.cs" />
      <Compile Include="Assets/Main/Scripts/UI/BombHUD.cs" />
+     <Compile Include="Assets/Main/Scripts/BadGuy/MovementType.cs" />
      <Compile Include="Assets/Main/Scripts/MovementController.cs" />
      <Compile Include="Assets/Main/Scripts/Hazard.cs" />
+     <Compile Include="Assets/Main/Scripts/BadGuy/WandererBadGuy.cs" />
+     <Compile Include="Assets/Main/Scripts/Map/ITileMap.cs" />
      <Compile Include="Assets/Main/Scripts/Character.cs" />
+     <Compile Include="Assets/Main/Scripts/Map/RoamingCharacterLocationMap.cs" />
      <Compile Include="Assets/Main/Scripts/Sound/PlayerSoundEmitter.cs" />
      <Compile Include="Assets/Main/Scripts/Box.cs" />
+     <Compile Include="Assets/Main/Scripts/BadGuy/DirectionalMovementController.cs" />
      <Compile Include="Assets/Main/Sprites/TopDown 2D RPG BE3/ReadMe/Scripts/ReadmeBE3.cs" />
+     <Compile Include="Assets/Main/Scripts/Map/LocationMap.cs" />
      <Compile Include="Assets/Main/Scripts/BombermanGameObject.cs" />
+     <Compile Include="Assets/Main/Scripts/Map/Location.cs" />
      <Compile Include="Assets/Main/Scripts/UI/BombUserInterfaceData.cs" />
      <Compile Include="Assets/Main/Scripts/Sound/SoundEmitter.cs" />
+     <Compile Include="Assets/Main/Scripts/BadGuy/BadGuy.cs" />
      <Compile Include="Assets/Main/Scripts/GameManager.cs" />
      <Compile Include="Assets/Main/Scripts/Player.cs" />
      <Compile Include="Assets/Main/Scripts/Utility/Extensions.cs" />
-     <Compile Include="Assets/Main/Scripts/BadGuy.cs" />
+     <Compile Include="Assets/Main/Scripts/BadGuy/MovementDirection.cs" />
      <Compile Include="Assets/Main/Scripts/Collision/CollisionData.cs" />
      <Compile Include="Assets/Main/Scripts/Breakable.cs" />
      <Compile Include="Assets/Main/Scripts/Bomb.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets/Main/Plugins/QuikGraph.xml" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
@@ -314,26 +325,32 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>/opt/Unity/Hub/Editor/2022.1.10f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="QuikGraph.Graphviz">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Main/Plugins/QuikGraph.Graphviz.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Mdb">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst.Cecil.Pdb">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Cecil">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Rocks">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll</HintPath>
+    <Reference Include="QuikGraph">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Main/Plugins/QuikGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>/opt/Unity/Hub/Editor/2022.1.10f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll</HintPath>

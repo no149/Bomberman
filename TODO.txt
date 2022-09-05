@@ -15,4 +15,4 @@ Add physics to bomb explosions such that hitting objects reduces its power to hi
 Add a condition based on which a path to the exit door must be non-passable until the condition is satisfied. e.g all badguys must be killed. DONE
 Add manual bomb detonation. DONE
 Make WebGL output. DONE
-Add "smart" badguy who can find a path to the player.
+Add wanderer badguy.

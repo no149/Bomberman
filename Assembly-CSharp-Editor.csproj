@@ -301,6 +301,21 @@
     <Reference Include="GitHub.Logging">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Plugins/GitHub/Editor/GitHub.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.IonicZip">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
+    </Reference>
+    <Reference Include="GitHub.Unity.45">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="log4netPlastic">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.collab-proxy@1.17.1/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.collab-proxy@1.17.1/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -309,6 +324,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="QuikGraph.Graphviz">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Main/Plugins/QuikGraph.Graphviz.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.Unsafe.dll</HintPath>
@@ -319,38 +337,26 @@
     <Reference Include="Unity.VisualScripting.TextureAssets">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.IonicZip">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Pdb">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll</HintPath>
+    <Reference Include="sfw.net">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="log4netPlastic">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.collab-proxy@1.17.1/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="GitHub.UnityShim">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll</HintPath>
     </Reference>
-    <Reference Include="sfw.net">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Plugins/GitHub/Editor/sfw.net.dll</HintPath>
+    <Reference Include="QuikGraph">
+        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Main/Plugins/QuikGraph.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="GitHub.Api.45">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.burst@1.7.3/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll</HintPath>
-    </Reference>
-    <Reference Include="GitHub.Unity.45">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-        <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
         <HintPath>/home/meghdad/dev/Unity/Bomberman/Library/PackageCache/com.unity.collab-proxy@1.17.1/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>

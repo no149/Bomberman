@@ -15,4 +15,8 @@ static class ExtensionMethods
             (float)Math.Round(vector3.y, decimalPlaces),
             (float)Math.Round(vector3.z, decimalPlaces));
     }
+    public static Vector2 Round(this Vector2 vector, int decimalPlaces)
+    {
+        return Round(new Vector3(vector.x, vector.y, 0), decimalPlaces);
+    }
 }

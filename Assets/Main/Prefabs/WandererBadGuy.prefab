@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 9076128486532487929}
   - component: {fileID: 9076128486532487934}
   - component: {fileID: 975371783}
-  - component: {fileID: 975371775}
-  - component: {fileID: -438734514058414700}
+  - component: {fileID: -8900856446339985135}
+  - component: {fileID: -8384396865421550477}
   m_Layer: 3
-  m_Name: BadGuy1
+  m_Name: WandererBadGuy
   m_TagString: BadGuy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,12 +30,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9076128486532487933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 7, z: 0}
   m_LocalScale: {x: 0.16, y: 0.16, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9076128486532487932
 SpriteRenderer:
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2c485f404f6b79e46bf40f28682b23d3, type: 3}
-  m_Color: {r: 0.8503471, g: 0.9150943, b: 0.85278827, a: 1}
+  m_Color: {r: 0.22653514, g: 0.050329305, b: 0.2735849, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -156,25 +156,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &975371775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076128486532487933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624cd8449ee80a1c6a4a5e4872bc0521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthPoints: 1
-  DamagePower: 1
-  MovementDirection: 0
-  BaseSpeed: 10
-  EscapeBomb: 0
-  ChasePlayer: 0
---- !u!58 &-438734514058414700
+--- !u!58 &-8900856446339985135
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,4 +171,22 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 16
+--- !u!114 &-8384396865421550477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076128486532487933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b168cacbf0b2ce42ab7bc50a509ca2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 2
+  DamagePower: 2
+  MovementDirection: 3
+  BaseSpeed: 10
+  EscapeBomb: 0
+  ChasePlayer: 0

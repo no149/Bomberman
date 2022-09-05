@@ -165,13 +165,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9076128486532487933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3064d17cfa409717ab62a10e3dace39, type: 3}
+  m_Script: {fileID: 11500000, guid: 624cd8449ee80a1c6a4a5e4872bc0521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPoints: 2
-  DamagePower: 2
-  MovementDirection: 1
-  BaseSpeed: 3
+  HealthPoints: 3
+  DamagePower: 3
+  MovementDirection: 0
+  BaseSpeed: 20
   EscapeBomb: 1
   ChasePlayer: 1
 --- !u!58 &-8900856446339985135

@@ -8,7 +8,8 @@ public class BadGuy : Character
     {
         Horizontal = 1,
         Vertical,
-        Both
+        RandomDirection,
+        Wanderer
     }
 
     public int DamagePower;
@@ -34,14 +35,14 @@ public class BadGuy : Character
 
     public override SoundEmitter SoundEmitter => null;
 
-    Rigidbody2D _rb2D;
+    protected Rigidbody2D _rb2D;
     Animator _animator;
     float _XmovementDirection = 0;
 
     float _YmovementDirection = 0;
 
     float _turnAngle;
-
+    float _defaultSpeed;
 
     private Vector3 _lastPos;
     Transform _antagonistTransform;
@@ -53,7 +54,7 @@ public class BadGuy : Character
     {
         get
         {
-            if (MovementDirection != MovementDirectionEnum.Both)
+            if (MovementDirection != MovementDirectionEnum.RandomDirection)
                 return MovementDirection;
             else
             {
@@ -69,24 +70,28 @@ public class BadGuy : Character
         base.Start();
         _rb2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _defaultSpeed = BaseSpeed * Time.fixedDeltaTime;
+        _currentSpeed = _defaultSpeed;
         ChangeMoveDirection(true);
-        _currentSpeed = BaseSpeed;
     }
 
     private void ChangeMoveDirection(bool init)
     {
         if (init)
+        {
             if (MovementDirection == MovementDirectionEnum.Horizontal)
                 _turnAngle = Mathf.Repeat(_turnAngle, 360);
-            else
+            else if (MovementDirection == MovementDirectionEnum.Vertical ||
+            MovementDirection == MovementDirectionEnum.RandomDirection)
                 _turnAngle = 90;
+        }
         else
         {
-            if (MovementDirection != MovementDirectionEnum.Both)
+            if (MovementDirection != MovementDirectionEnum.RandomDirection)
             {
                 if (MovementDirection == MovementDirectionEnum.Vertical)
                     _turnAngle *= -1;
-                else
+                else if (MovementDirection == MovementDirectionEnum.Horizontal)
                     _turnAngle = _turnAngle == 0 ? 180 : 0;
             }
             else
@@ -113,11 +118,11 @@ public class BadGuy : Character
         Move();
     }
 
-    private void Move()
+    protected virtual void Move()
     {
         if (_antagonistInSight && ChasePlayer)
         {
-            _currentSpeed = BaseSpeed * 1.2f; //pursuitSpeed;            
+            _currentSpeed = _defaultSpeed * 1.2f; //pursuitSpeed;            
             _animator.SetBool("Running", true);
             if (_chaseAntagonistRoutine == null)
                 _chaseAntagonistRoutine = StartCoroutine(ChaseAntagonist());
@@ -129,19 +134,19 @@ public class BadGuy : Character
                 StopCoroutine(_chaseAntagonistRoutine);
                 _chaseAntagonistRoutine = null;
                 _animator.SetBool("Running", false);
-                _currentSpeed = BaseSpeed;
+                _currentSpeed = _defaultSpeed;
             }
             var curpos = gameObject.transform.position;
             //To prevent warbling in place, because of frame-rate.
             var changeDirCoef = 1f;
-            var curPosRounded = curpos.Round(2);
-            if (curPosRounded == _lastPos)
+            //var curPosRounded = curpos.Round(2);
+            if (curpos == _lastPos)
             {
                 ChangeMoveDirection(false);
                 changeDirCoef = 1.1f;
             }
 
-            _lastPos = curPosRounded;
+            _lastPos = curpos;
             _rb2D.velocity = new Vector2(_currentSpeed * _XmovementDirection * changeDirCoef,
                     _currentSpeed * _YmovementDirection * changeDirCoef);
         }
@@ -159,7 +164,7 @@ public class BadGuy : Character
                 Vector3
                     .MoveTowards(transform.position,
                     endPosition,
-                    BaseSpeed * Time.deltaTime);
+                    _defaultSpeed);
 
             _rb2D.MovePosition(newPosition);
             remainingDistance =
