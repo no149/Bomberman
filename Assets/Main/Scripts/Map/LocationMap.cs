@@ -84,7 +84,7 @@ class LocationMap
         return UnityEngine.GameObject.Find("Trees").GetComponent<Tilemap>();
     }
 
-    public QuikGraph.IGraph<Location, QuikGraph.IEdge<Location>> GenerateGraph(Location[,] tilesMatrix)
+    public UndirectedGraph<Location, QuikGraph.IEdge<Location>> GenerateGraph(Location[,] tilesMatrix)
     {
         var edgelist = new List<QuikGraph.Edge<Location>>(tilesMatrix.Length);
         for (int i = 0; i < tilesMatrix.GetLength(0); i++)
@@ -95,24 +95,24 @@ class LocationMap
                 if (source.blocked)
                     continue;
 
-                if (i > 0 && !tilesMatrix[i - 1, j].blocked)
+                if (i > 0)
                 {
                     var edge1 = CreateEdge(source, tilesMatrix[i - 1, j]);
                     edgelist.Add(edge1);
                 }
-                if (i < tilesMatrix.GetLength(0) - 1 && !tilesMatrix[i + 1, j].blocked)
+                if (i < tilesMatrix.GetLength(0) - 1)
                 {
                     var edge2 = CreateEdge(source, tilesMatrix[i + 1, j]);
                     edgelist.Add(edge2);
 
                 }
-                if (j > 0 && !tilesMatrix[i, j - 1].blocked)
+                if (j > 0)
                 {
                     var edge3 = CreateEdge(source, tilesMatrix[i, j - 1]);
                     edgelist.Add(edge3);
 
                 }
-                if (j < tilesMatrix.GetLength(1) - 1 && !tilesMatrix[i, j + 1].blocked)
+                if (j < tilesMatrix.GetLength(1) - 1)
                 {
                     var edge4 = CreateEdge(source, tilesMatrix[i, j + 1]);
                     edgelist.Add(edge4);

@@ -6,13 +6,11 @@ using UnityEngine;
 using System.Linq;
 class RoamingCharacterLocationMap
 {
-    string _tilemapName;
     Location _initLocation;
-    IGraph<Location, QuikGraph.IEdge<Location>> _mapGraph;
+    UndirectedGraph<Location, QuikGraph.IEdge<Location>> _mapGraph;
+    Dictionary<Location, IList<IEdge<Location>>> _unpassedPaths;
     private UndirectedDepthFirstSearchAlgorithm<Location, IEdge<Location>> _searchAlgorithm;
-    private List<Location> _locationsToVisit;
-    int _currentLocationIndex;
-    private int _direction = 1;
+    //private List<Location> _locationsToVisit;
     private LocationMap _locationMap;
     private Location _currentLocation;
 
@@ -21,7 +19,7 @@ class RoamingCharacterLocationMap
     public RoamingCharacterLocationMap(Character character)
     {
         _locationMap = new LocationMap();
-        _initLocation = GetCharacterLocalLocation(character);
+        _currentLocation = _initLocation = GetCharacterLocalLocation(character);
     }
 
     private Location GetCharacterLocalLocation(Character character)
@@ -39,9 +37,9 @@ class RoamingCharacterLocationMap
     {
         var locationMatrix = _locationMap.GenerateMapStateMatrix();
         _mapGraph = _locationMap.GenerateGraph(locationMatrix);
-        _locationsToVisit = new List<Location>(locationMatrix.Length);
+        // _locationsToVisit = new List<Location>(locationMatrix.Length);
+        _unpassedPaths = new Dictionary<Location, IList<IEdge<Location>>>(_mapGraph.VertexCount);
         _searchAlgorithm = _locationMap.CreateTraversalAlgorithm();
-        _searchAlgorithm.DiscoverVertex += GraphLocation_Discovered;
         _searchAlgorithm.FinishVertex += GraphLocation_Finished;
         _searchAlgorithm.Finished += Search_Finished;
         _searchAlgorithm.Compute(_initLocation);
@@ -51,39 +49,57 @@ class RoamingCharacterLocationMap
 
     private void GraphLocation_Finished(Location vertex)
     {
-        _locationsToVisit.Add(vertex);
+        _unpassedPaths.Add(vertex, _mapGraph.AdjacentEdges(vertex).ToList());
     }
 
 
 
     private void GraphLocation_Discovered(Location vertex)
     {
-        _locationsToVisit.Add(vertex);
+
 
         //   _locationsToVisit.Add(vertex);
     }
 
     public Location GetNextLocation()
     {
-
         if (_mapGraph == null)
             throw new System.InvalidOperationException("Not initialized");
 
-
-        if (_locationsToVisit.Count == 0)
+        var nextPath = GetNextPath(_currentLocation);
+        var nextLocation = nextPath.Target.Equals(_currentLocation) ? nextPath.Source : nextPath.Target;
+        while (nextLocation.blocked)
         {
-            return _currentLocation;
+            nextPath = GetNextPath(_currentLocation);
+            nextLocation = nextPath.Target.Equals(_currentLocation) ? nextPath.Source : nextPath.Target;
         }
-        // else if (_currentLocationIndex == 0)
-        // {
-        //     _direction = 1;
-        // }
-        // var edges = _searchAlgorithm.VisitedGraph.AdjacentEdges(_currentLocation).ToArray();
-        // ShuffleEdges(edges);
-        _currentLocation = _locationsToVisit[_currentLocationIndex++];
+        _currentLocation = nextLocation;
+        return nextLocation;
+    }
 
-        //       _currentLocationIndex += _direction;
-        return _currentLocation;
+    private IEdge<Location> GetNextPath(Location currentLocation)
+    {
+        var pathsFromCurrentLocation = _unpassedPaths[_currentLocation];
+        IEdge<Location> nextPath = null;
+        if (pathsFromCurrentLocation.Count == 0)
+        {
+            RefillPaths(_currentLocation);
+        }
+        nextPath = SelectRandomPath(pathsFromCurrentLocation);
+        Debug.Assert(pathsFromCurrentLocation.Remove(nextPath));
+        return nextPath;
+    }
+
+    private IEdge<Location> SelectRandomPath(IList<IEdge<Location>> pathsFromCurrentLocation)
+    {
+        var pathIx = UnityEngine.Random.Range(0, pathsFromCurrentLocation.Count);
+        return pathsFromCurrentLocation[pathIx];
+    }
+
+    private void RefillPaths(Location currentLocation)
+    {
+        foreach (var path in _mapGraph.AdjacentEdges(currentLocation))
+            _unpassedPaths[currentLocation].Add(path);
     }
 
     private IEdge<Location>[] ShuffleEdges(IEdge<Location>[] edges)
@@ -134,36 +150,35 @@ class RoamingCharacterLocationMap
     // }
     private void Search_Finished(object sender, EventArgs e)
     {
-        ConnectDisjointLocations();
+        // ConnectDisjointLocations();
         Ready = true;
     }
 
-    private void ConnectDisjointLocations()
-    {
-        for (int i = 0; i < _locationsToVisit.Count; i++)
-        {
-            if (i - 1 >= 0)
-            {
-                var prevLocation = _locationsToVisit[i - 1];
-                var currentLocation = _locationsToVisit[i];
-                IEdge<Location> connectingEdge;
-                var hasConnectingEdge = _searchAlgorithm.VisitedGraph.TryGetEdge(prevLocation, currentLocation, out connectingEdge);
-                if (!hasConnectingEdge)
-                {
-                    var fromPrevLocationEdges = _searchAlgorithm.VisitedGraph.AdjacentEdges(prevLocation);
-                    foreach (var edge in fromPrevLocationEdges)
-                    {
+    // private void ConnectDisjointLocations()
+    // {
+    //     for (int i = 0; i < _locationsToVisit.Count; i++)
+    //     {
+    //         if (i - 1 >= 0)
+    //         {
+    //             var prevLocation = _locationsToVisit[i - 1];
+    //             var currentLocation = _locationsToVisit[i];
+    //             IEdge<Location> connectingEdge;
+    //             var hasConnectingEdge = _searchAlgorithm.VisitedGraph.TryGetEdge(prevLocation, currentLocation, out connectingEdge);
+    //             if (!hasConnectingEdge)
+    //             {
+    //                 var fromPrevLocationEdges = _searchAlgorithm.VisitedGraph.AdjacentEdges(prevLocation);
+    //                 foreach (var edge in fromPrevLocationEdges)
+    //                 {
 
-                        var hasToCurrentLocationEdge = _searchAlgorithm.VisitedGraph.TryGetEdge(edge.Target, currentLocation, out connectingEdge);
-                        if (hasToCurrentLocationEdge)
-                        {
-                            _locationsToVisit.Insert(i, edge.Target);
-                            i++;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //                     var hasToCurrentLocationEdge = _searchAlgorithm.VisitedGraph.TryGetEdge(edge.Target, currentLocation, out connectingEdge);
+    //                     if (hasToCurrentLocationEdge)
+    //                     {
+    //                         _locationsToVisit.Insert(i, edge.Target);
+    //                         i++;
+    //                         break;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //}
 }
